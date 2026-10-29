@@ -223,6 +223,13 @@ function lessonForm(){
     <p class="small2">Bifează răspunsul corect. Voluntarul trece cu cel puțin ${Math.max(1, Math.ceil(l.q.length * 0.8))} răspunsuri corecte (80%). Variantele apar amestecate.</p>
     <div id="qs">${l.q.map((q, k) => qHTML(q, k, l.q.length)).join("")}</div>
     <button class="btn quiet" type="button" data-act="addq">${ic("plus")}<span>Întrebare nouă</span></button>
+  </section>
+  <section class="apanel"><h3>Copiile de siguranță ale lecției</h3>
+    <p class="small2">Fiecare salvare păstrează și o copie a acestei lecții. Poți reveni doar la lecția aceasta, fără să atingi restul cursului.</p>
+    <div class="rowb"><button class="btn quiet" type="button" data-act="lver">Arată versiunile salvate</button>
+      <button class="btn quiet" type="button" data-act="ldl">Descarcă lecția (JSON)</button>
+      <label class="btn quiet"><input type="file" accept="application/json" hidden data-limport><span>Înlocuiește dintr-un fișier</span></label></div>
+    <ul class="admlist" id="lver"></ul>
   </section>`;
 }
 const qHTML = (q, k, n) => `<fieldset class="qe"><legend>Întrebarea ${k + 1}</legend>
@@ -350,8 +357,35 @@ function historyTab(){
   <section class="apanel"><h2>Copie pe calculator</h2><div class="rowb">
     <button class="btn quiet" type="button" data-act="export">Descarcă o copie (JSON)</button>
     <label class="btn quiet"><input type="file" accept="application/json" hidden data-import><span>Încarcă dintr-o copie</span></label>
-    <button class="btn danger" type="button" data-act="reset">Revino la cursul inițial</button></div></section>`;
+    <button class="btn danger" type="button" data-act="reset">Revino la cursul inițial</button></div></section>
+  <section class="apanel"><h2>Lecții șterse</h2><p class="small2">Lecțiile care apar în salvările vechi, dar nu mai sunt în curs.</p>
+    <button class="btn quiet" type="button" data-act="deleted">Caută lecții șterse</button><ul class="admlist" id="dels"></ul></section>
+  <section class="apanel"><h2>Istoricul voluntarilor</h2><p class="small2">Fiecare test dat și fiecare lecție citită până la capăt, de către voluntarii conectați. Fișierele CSV se deschid în Google Sheets sau Excel.</p>
+    <div class="rowb"><button class="btn quiet" type="button" data-act="csv" data-k="log">Descarcă istoricul (CSV)</button><button class="btn quiet" type="button" data-act="csv" data-k="sum">Descarcă rezultatele pe voluntar (CSV)</button></div></section>`;
 }
+
+// ─── COPII PE LECȚIE ───
+const download = (name, text, type) => {
+  const url = URL.createObjectURL(new Blob([text], {type}));
+  Object.assign(document.createElement("a"), {href: url, download: name}).click();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+};
+const csv = rows => "﻿" + rows.map(r => r.map(v => `"${String(v ?? "").replace(/"/g, '""')}"`).join(",")).join("\r\n");
+let lvCache = [], delCache = [];
+async function historyRows(){
+  const {data, error} = await sb.from("site_content_history").select("saved_at,saved_by,data").order("saved_at", {ascending: false}).limit(30);
+  if (error) toast("Nu pot citi istoricul: " + error.message, true);
+  return data || [];
+}
+async function fetchAll(table, order){
+  let out = [], from = 0;
+  for (;;) {
+    const {data, error} = await sb.from(table).select("*").order(order, {ascending: true}).range(from, from + 999);
+    if (error) { toast(`Nu pot citi ${table}: ${error.message}. Ai rulat supabase-history.sql?`, true); return null; }
+    out = out.concat(data); if (data.length < 1000) return out; from += 1000;
+  }
+}
+const lessonsOf = c => (c.chapters || []).flatMap(ch => (ch.lessons || []).map(l => ({l, ch})));
 
 // ─── ACȚIUNI ───
 const move = (arr, i, d) => { const j = i + d; if (j < 0 || j >= arr.length) return; [arr[i], arr[j]] = [arr[j], arr[i]]; };
@@ -392,6 +426,47 @@ A.addEventListener("click", async e => {
     if (error) return toast("Nu am putut încărca: " + error.message, true);
     draft = normalize(clone(data.data)); tab = "curs"; sel = {ci: 0, li: -1}; re(); return toast("Versiunea veche e încărcată. Apasă Salvează ca să o publici.");
   }
+  if (a === "lver") {
+    const el = document.getElementById("lver"); el.innerHTML = "<li>Se caută…</li>";
+    const seen = new Set(); lvCache = [];
+    (await historyRows()).forEach(r => { const f = lessonsOf(r.data).find(x => x.l.id === l.id); if (!f) return; const k = JSON.stringify(f.l); if (seen.has(k)) return; seen.add(k); lvCache.push({at: r.saved_at, by: r.saved_by, l: f.l}); });
+    el.innerHTML = lvCache.length ? lvCache.map((v, n) => `<li><span>${new Date(v.at).toLocaleString("ro-RO", {dateStyle: "medium", timeStyle: "short"})} · ${esc(v.by || "")} · „${esc(v.l.t)}”, ${v.l.q.length} întrebări${JSON.stringify(v.l) === JSON.stringify(l) ? " <small>(ca acum)</small>" : ""}</span>
+      <button class="btn quiet small-btn" type="button" data-act="lrest" data-n="${n}">Revino la aceasta</button></li>`).join("") : "<li>Lecția nu apare încă în nicio salvare.</li>";
+    return;
+  }
+  if (a === "lrest") { ch.lessons[sel.li] = clone(lvCache[+b.dataset.n].l); re(); return toast("Lecția a revenit la versiunea aleasă. Apasă Salvează ca să o publici."); }
+  if (a === "ldl") return download(`lectie-${slug(l.t) || l.id}.json`, JSON.stringify(l, null, 2), "application/json");
+  if (a === "deleted") {
+    const el = document.getElementById("dels"); el.innerHTML = "<li>Se caută…</li>";
+    const now = new Set(lessonsOf(draft).map(x => x.l.id)), found = new Map();
+    (await historyRows()).forEach(r => lessonsOf(r.data).forEach(({l: hl, ch: hc}) => { if (!now.has(hl.id) && !found.has(hl.id)) found.set(hl.id, {l: hl, ch: hc.id, cht: hc.t, at: r.saved_at}); }));
+    delCache = [...found.values()];
+    el.innerHTML = delCache.length ? delCache.map((d, n) => `<li><span>„${esc(d.l.t)}” din „${esc(d.cht)}” · ultima dată ${new Date(d.at).toLocaleDateString("ro-RO")}</span><button class="btn quiet small-btn" type="button" data-act="undel" data-n="${n}">Pune înapoi</button></li>`).join("") : "<li>Nu am găsit lecții șterse în ultimele 30 de salvări.</li>";
+    return;
+  }
+  if (a === "undel") {
+    const d = delCache[+b.dataset.n], ci = Math.max(0, chs.findIndex(c => c.id === d.ch));
+    if (!chs.length) return toast("Adaugă întâi un capitol.", true);
+    chs[ci].lessons.push(clone(d.l)); delCache.splice(+b.dataset.n, 1); b.closest("li").remove(); markDirty();
+    return toast(`„${d.l.t}” e din nou în „${chs[ci].t}”. Apasă Salvează ca să o publici.`);
+  }
+  if (a === "csv") {
+    b.disabled = true;
+    const day = new Date().toISOString().slice(0, 10);
+    if (b.dataset.k === "log") {
+      const rows = await fetchAll("activity", "id");
+      if (rows) download(`istoric-voluntari-${day}.csv`, csv([["Data", "Email", "Nume", "Lecția", "Ce a făcut", "Scor", "Din", "Trecut"],
+        ...rows.map(r => [new Date(r.at).toLocaleString("ro-RO"), r.email, r.name, r.lesson_title, r.kind === "test" ? "Test" : "Lecție citită", r.score, r.total, r.passed == null ? "" : r.passed ? "da" : "nu"])]), "text/csv");
+    } else {
+      const rows = await fetchAll("results", "updated"), ls = lessonsOf(draft).map(x => x.l);
+      // older saves keyed progress by modules.js position (0..13); those map to ids m1..m14
+      const fix = o => { const r = {}; for (const k in o || {}) r[/^\d+$/.test(k) ? "m" + (+k + 1) : k] = o[k]; return r; };
+      if (rows) download(`rezultate-voluntari-${day}.csv`, csv([["Nume", "Email", "Curs %", "Teste trecute", "Ultima activitate", ...ls.map(x => x.t)],
+        ...rows.map(r => { const sc = fix(r.scores), rd = fix((r.scores || {}).read), p = ls.length ? Math.round(ls.reduce((s, x) => s + (sc[x.id] ? 100 : 70 * Math.min(1, rd[x.id] || 0)), 0) / ls.length) : 0;
+          return [r.name, r.email, p, ls.filter(x => sc[x.id]).length + "/" + ls.length, new Date(r.updated).toLocaleString("ro-RO"), ...ls.map(x => sc[x.id] || "")]; })]), "text/csv");
+    }
+    b.disabled = false; return;
+  }
   if (a === "export") {
     const url = URL.createObjectURL(new Blob([JSON.stringify(draft, null, 2)], {type: "application/json"}));
     Object.assign(document.createElement("a"), {href: url, download: "curs-" + new Date().toISOString().slice(0, 10) + ".json"}).click();
@@ -418,6 +493,15 @@ A.addEventListener("change", async e => {
     sel = {ci: to, li: draft.chapters[to].lessons.length - 1}; shell(); markDirty(); return;
   }
   if (t.matches("[data-upload]")) { await upload([...t.files]); t.value = ""; return paintUploads(!!t.closest("#picker")); }
+  if (t.matches("[data-limport]")) {
+    try {
+      const nl = JSON.parse(await t.files[0].text()); if (!nl.t || !Array.isArray(nl.q)) throw 0;
+      const cur = draft.chapters[sel.ci].lessons[sel.li];
+      draft.chapters[sel.ci].lessons[sel.li] = Object.assign({html: "", d: ""}, nl, {id: cur.id}); // keep the id so volunteers' progress still counts
+      shell(); markDirty(); toast("Lecția a fost înlocuită din fișier. Apasă Salvează ca să o publici.");
+    } catch(err) { toast("Fișierul nu e o lecție validă.", true); }
+    t.value = ""; return;
+  }
   if (t.matches("[data-import]")) {
     try { const c = JSON.parse(await t.files[0].text()); if (!c.chapters) throw 0; draft = normalize(c); sel = {ci: 0, li: -1}; tab = "curs"; shell(); markDirty(); toast("Copia e încărcată. Apasă Salvează ca să o publici."); }
     catch(err) { toast("Fișierul nu e o copie validă a cursului.", true); }

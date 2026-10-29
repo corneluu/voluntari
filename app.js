@@ -56,6 +56,12 @@ const sync = () => {
   queue = queue.then(() => sb.from("results").upsert({user_id: session.user.id, name: state.name, email: session.user.email, scores: {...state.done, read: state.read}, updated: new Date().toISOString()}))
     .then(r => r && r.error && console.warn("sync", r.error.message)).catch(e => console.warn("sync", e));
 };
+// one row per test attempt or finished reading, for the team history (Google Sheet + admin CSV)
+const logActivity = (m, kind, score, total, ok) => {
+  if (!sb || !session) return;
+  sb.from("activity").insert({user_id: session.user.id, email: session.user.email, name: state.name, lesson_id: m.id, lesson_title: m.t, kind, score, total, passed: ok})
+    .then(r => r && r.error && console.warn("activity", r.error.message));
+};
 let readTimer = 0;
 const syncSoon = () => { clearTimeout(readTimer); readTimer = setTimeout(sync, 2500); };
 
@@ -377,7 +383,7 @@ function lesson(i){
     if (!e.isIntersecting) return;
     seen.add(e.target); io.unobserve(e.target);
     const f = seen.size / parts.length;
-    if (f > (state.read[id] || 0)) { state.read[id] = f; save(); syncSoon(); document.getElementById("lpct").textContent = pct(i) + "%"; }
+    if (f > (state.read[id] || 0)) { state.read[id] = f; save(); syncSoon(); document.getElementById("lpct").textContent = pct(i) + "%"; if (f === 1) logActivity(m, "read", null, null, null); }
   }), {rootMargin: "0px 0px -35% 0px"});
   parts.forEach(p => io.observe(p));
   const bar = document.getElementById("readbar");
@@ -395,6 +401,7 @@ function lesson(i){
       why.innerHTML = (ok ? "<b>Corect.</b> " : `<b>Răspunsul corect:</b> ${esc(q[1][q[2]])}. `) + esc(q[3]);
     });
     const res = document.getElementById("res");
+    logActivity(m, "test", score, m.q.length, score >= PASS);
     if (score >= PASS) {
       state.done[id] = Math.max(score, state.done[id] || 0); state.read[id] = 1; save(); sync();
       document.getElementById("lpct").textContent = "100%";
