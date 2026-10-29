@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Școala Voluntarilor</title>
+<meta name="description" content="Curs online pentru voluntarii corului și ai evenimentelor pentru tineri: lecții scurte, teste și certificat.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: one narrow reading column; home = module list like a concert programme, lesson view = text then quiz */
+:root{
+  --bg:#f5f6f9; --surface:#ffffff; --fg:#1d2433; --muted:#5b6478; --line:#dde1ea;
+  --accent:#2c4f7c; --accent-soft:#e3eaf4; --gold:#a8791f; --ok:#2e7d4f; --ok-soft:#e2f2e8; --bad:#b23b3b; --bad-soft:#f8e3e3;
+  --display:"Alegreya", Georgia, serif; --body:"Source Sans 3", "Segoe UI", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#141922; --surface:#1d2430; --fg:#e7eaf1; --muted:#9aa3b5; --line:#2e3746;
+  --accent:#8fb3e3; --accent-soft:#243246; --gold:#d9ac55; --ok:#6cc58f; --ok-soft:#1d3327; --bad:#e58a8a; --bad-soft:#3a2224; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#141922; --surface:#1d2430; --fg:#e7eaf1; --muted:#9aa3b5; --line:#2e3746;
+  --accent:#8fb3e3; --accent-soft:#243246; --gold:#d9ac55; --ok:#6cc58f; --ok-soft:#1d3327; --bad:#e58a8a; --bad-soft:#3a2224; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font:17px/1.6 var(--body)}
+.wrap{max-width:720px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:2.2rem} h2{font-size:1.6rem} h3{font-size:1.2rem;margin-top:1.4em}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.lead{color:var(--muted);margin:.6em 0 0}
+.progress{margin:22px 0 26px;display:grid;gap:6px}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--accent);transition:width .4s}
+.small{font-size:.9rem;color:var(--muted)}
+.list{display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.mod{display:grid;grid-template-columns:2.4rem 1fr auto;gap:14px;align-items:center;width:100%;text-align:left;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font:inherit;cursor:pointer}
+.mod:hover{border-color:var(--accent)}
+.mod:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.num{font-family:var(--display);font-size:1.5rem;color:var(--accent);text-align:center}
+.mod strong{display:block;font-size:1.05rem}
+.mod span{color:var(--muted);font-size:.92rem}
+.pill{font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap;background:var(--accent-soft);color:var(--accent)}
+.pill.done{background:var(--ok-soft);color:var(--ok)}
+.btn{font:600 1rem var(--body);border:0;border-radius:8px;padding:11px 20px;background:var(--accent);color:var(--bg);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent);border:1px solid var(--line)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.lesson{min-width:0}
+.lesson ul{padding-left:1.2em} .lesson li{margin:.3em 0}
+.tip{background:var(--accent-soft);border-radius:8px;padding:12px 16px;margin:16px 0}
+.quiz{margin-top:36px;border-top:2px solid var(--line);padding-top:24px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;margin:14px 0}
+.q p{margin:0 0 10px;font-weight:600}
+.q label{display:flex;gap:10px;align-items:flex-start;padding:7px 8px;border-radius:6px;cursor:pointer}
+.q label:hover{background:var(--accent-soft)}
+.q input{margin-top:.35em;accent-color:var(--accent)}
+.q.right{border-color:var(--ok);background:var(--ok-soft)} .q.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.why{margin:8px 0 0;font-size:.95rem}
+.result{font-weight:700;margin-top:16px}
+.cert{margin-top:24px;background:var(--surface);border:2px solid var(--gold);border-radius:6px;padding:36px 24px;text-align:center}
+.cert .who{font-family:var(--display);font-size:2rem;margin:.3em 0;color:var(--accent)}
+.field{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.field input{flex:1 1 220px;min-width:0;font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--fg)}
+.tablewrap{overflow-x:auto;margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;font-size:.95rem}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+th{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+tbody tr:last-child td{border-bottom:0}
+@media (prefers-reduced-motion: reduce){ .bar>i{transition:none} }
+</style>
+<style>
+*{box-sizing:border-box}
+body{margin:0}
+.login{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px}
+.login p{margin:0}
+.btn.google{background:var(--surface);color:var(--fg);border:1px solid var(--line)}
+.msg{font-size:.92rem;color:var(--muted)}
+.msg.err{color:var(--bad)}
+.linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="modules.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
