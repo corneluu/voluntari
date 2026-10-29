@@ -407,3 +407,8 @@ input{caret-color:var(--accent)}
 
 .scallop{height:clamp(16px,4.2vw,50px)}
 .menu-top .mark{white-space:nowrap;font-size:clamp(1rem,.9rem + 1vw,1.625rem)}
+
+/* the topics card shows whole: no crop at the section edge */
+.topics{overflow:visible;padding-bottom:140px}
+.tcard{margin-bottom:0}
+@media (max-width: 900px){.topics{padding-bottom:96px}.tcard{margin-bottom:0}}
