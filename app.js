@@ -1,37 +1,47 @@
 // ─── STARE ───
-const M = window.MODULES, C = window.CONFIG || {}, PASS = 4, KEY = "scoala-voluntarilor-v1";
+const C = window.CONFIG || {}, KEY = "scoala-voluntarilor-v1", CKEY = "scoala-voluntarilor-content";
 let state = {done:{}, read:{}, name:""};
 try { state = Object.assign(state, JSON.parse(localStorage.getItem(KEY)) || {}); } catch(e){}
 state.read = state.read || {};
+// progress used to be keyed by the lesson's position in modules.js (0..13); lessons now have ids m1..m14
+const fixKeys = o => { const r = {}; for (const k in o || {}) r[/^\d+$/.test(k) ? "m" + (+k + 1) : k] = o[k]; return r; };
+state.done = fixKeys(state.done); state.read = fixKeys(state.read);
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){} };
 const app = document.getElementById("app");
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const here = () => location.origin + location.pathname;
 const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 // answer order is shuffled on every attempt so the right answer isn't always in the same spot
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-// ─── CAPITOLE ───
-// Indicii modulelor din modules.js (de la 0). Ordinea de aici e ordinea recomandată.
-const CH = [
-  {id:"echipa", t:"Echipa", d:"Cine suntem, ce spune legea și cum lucrăm împreună.", mods:[0,1,5], tone:"var(--f1)", ink:"var(--paper-ink)", tab:"var(--f4)", tabInk:"var(--ink)",
-   img:"assets/april-2023-piata-unirii-din-timisoara-img.jpg", alt:"Piața Unirii din Timișoara, cu Domul romano-catolic", cap:"Piața Unirii, Timișoara, 2023"},
-  {id:"concertul", t:"Concertul", d:"Primirea publicului, focul și aglomerația, oamenii care au nevoie de ajutor.", mods:[3,8,13], tone:"var(--f2)", ink:"var(--accent-ink)", tab:"var(--paper)", tabInk:"var(--paper-ink)",
-   img:"assets/corul-cantand.jpg", alt:"Membrii corului cântând împreună într-o capelă, în fața dirijorului", cap:"Corul, cântând într-o capelă"},
-  {id:"tinerii", t:"Tinerii", d:"Evenimentele pentru adolescenți și tot ce îi ține în siguranță.", mods:[4,2,7,10,12], tone:"var(--f3)", ink:"var(--accent-ink)", tab:"var(--bg)", tabInk:"var(--ink)",
-   img:"assets/landesarchiv-baden-wuerttemberg-staatsarchiv-freiburg-w-134.jpg", alt:"Piața Unirii și Domul din Timișoara într-o fotografie alb-negru din 1937", cap:"Piața Unirii, aprilie 1937"},
-  {id:"greu", t:"Când e greu", d:"Urgențe, oameni în suferință și conflicte. Ce faci în primele minute.", mods:[6,9,11], tone:"var(--f4)", ink:"var(--ink)", tab:"var(--f2)", tabInk:"var(--accent-ink)", dark:true,
-   img:"assets/piarist-church-timisoara-2023-img-12.jpg", alt:"Biserica Piariștilor din Timișoara, cu turnul ei înalt", cap:"Biserica Piariștilor, Timișoara, 2023"},
-];
+// ─── CONȚINUT ───
+// M = all lessons in course order, CH = chapters with mods = indexes into M. Built from the database copy, or content.js.
+let M = [], CH = [], SITE = {};
+function applyContent(c){
+  SITE = Object.assign({}, window.DEFAULT_CONTENT.site, c.site || {});
+  M = []; CH = [];
+  (c.chapters || []).forEach(ch => {
+    const mods = (ch.lessons || []).filter(l => l && l.id).map(l => { M.push(l); return M.length - 1; });
+    CH.push(Object.assign({}, ch, window.TONES[ch.tone] || window.TONES.paper, {mods}));
+  });
+  CH = CH.filter(c => c.mods.length);
+}
+let cached = null;
+try { cached = JSON.parse(localStorage.getItem(CKEY)); } catch(e){}
+applyContent(cached && cached.data ? cached.data : window.DEFAULT_CONTENT);
+const img = p => esc(p || "");
 const chOf = i => CH.find(c => c.mods.includes(i));
+const passMark = m => Math.max(1, Math.ceil(m.q.length * 0.8));
 
 // ─── PROGRES ───
 // Lecția citită (pe părți, la derulare) valorează până la 70%; testul trecut duce lecția la 100%.
-const pct = i => state.done[i] ? 100 : Math.round(70 * Math.min(1, state.read[i] || 0));
+const K = i => M[i].id;
+const pct = i => state.done[K(i)] ? 100 : Math.round(70 * Math.min(1, state.read[K(i)] || 0));
 const chPct = c => Math.round(c.mods.reduce((s, i) => s + pct(i), 0) / c.mods.length);
-const coursePct = () => Math.round(M.reduce((s, m, i) => s + pct(i), 0) / M.length);
-const passed = () => Object.keys(state.done).filter(k => +k < M.length).length;
-const nextModule = () => { for (const c of CH) for (const i of c.mods) if (!state.done[i]) return i; return null; };
+const coursePct = () => M.length ? Math.round(M.reduce((s, m, i) => s + pct(i), 0) / M.length) : 0;
+const passed = () => M.filter(m => state.done[m.id]).length;
+const nextModule = () => { for (const c of CH) for (const i of c.mods) if (!state.done[K(i)]) return i; return null; };
+const lessonHref = i => "#lectia-" + K(i);
 
 // ─── SUPABASE (login + rezultate) ───
 const sb = C.SUPABASE_URL && C.SUPABASE_ANON_KEY && window.supabase ? window.supabase.createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY) : null;
@@ -55,9 +65,9 @@ async function onSession(s){
     if (!state.name) state.name = session.user.user_metadata?.full_name || "";
     const {data} = await sb.from("results").select("name,scores").eq("user_id", session.user.id).maybeSingle();
     if (data) { // îmbină rezultatele de pe alt dispozitiv
-      const sc = data.scores || {};
+      const sc = fixKeys(data.scores), rd = fixKeys((data.scores || {}).read);
       for (const k in sc) if (k !== "read") state.done[k] = Math.max(sc[k], state.done[k] || 0);
-      for (const k in sc.read || {}) state.read[k] = Math.max(sc.read[k], state.read[k] || 0);
+      for (const k in rd) state.read[k] = Math.max(rd[k], state.read[k] || 0);
       if (!state.name && data.name) state.name = data.name;
     }
     save(); sync(); // trimite și progresul făcut înainte de conectare
@@ -83,12 +93,12 @@ const ICON = {
   book: '<path d="M4 5h6a2 2 0 012 2v12a2 2 0 00-2-2H4zM20 5h-6a2 2 0 00-2 2v12a2 2 0 012-2h6z"/>',
 };
 const ic = n => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
-const goTarget = () => { const nx = nextModule(); return nx === null ? {href: "#certificat", label: "Certificatul", t: ""} : {href: "#lectia-" + (nx + 1), label: coursePct() > 0 ? "Continuă" : "Începe", t: M[nx].t}; };
+const goTarget = () => { const nx = nextModule(); return nx === null ? {href: "#certificat", label: "Certificatul", t: ""} : {href: lessonHref(nx), label: coursePct() > 0 ? "Continuă" : "Începe", t: M[nx].t}; };
 
 function barHTML(){
   return `<header class="bar wrap" id="bar">
     <button class="menu-btn" type="button" data-menu aria-haspopup="dialog" aria-controls="menu" aria-label="Deschide meniul">${ic("menu")}<span>Meniu</span></button>
-    <a class="mark" href="#" data-top>Școala Voluntarilor</a>
+    <a class="mark" href="#" data-top>${esc(SITE.name)}</a>
     <div class="right" id="barRight"></div>
   </header>
   <nav class="dock" aria-label="Navigare rapidă">
@@ -106,14 +116,14 @@ function paintBar(){
 function menuHTML(){
   const g = goTarget(), L = (h, t, s) => `<li><a class="mlink" href="${h}"${h === "#" ? " data-top" : ""}><span>${t}</span>${s ? `<small>${s}</small>` : ""}</a></li>`;
   return `<div class="menu-in">
-    <div class="menu-top"><span class="mark">Școala Voluntarilor</span><button class="close" type="button" data-close>${ic("close")}<span>Închide</span></button></div>
-    <a class="btn wide" href="${g.href}"><span>${g.label}${g.t ? ": " + g.t : ""}</span>${ic("arrow")}</a>
+    <div class="menu-top"><span class="mark">${esc(SITE.name)}</span><button class="close" type="button" data-close>${ic("close")}<span>Închide</span></button></div>
+    <a class="btn wide" href="${g.href}"><span>${g.label}${g.t ? ": " + esc(g.t) : ""}</span>${ic("arrow")}</a>
     <h2 class="menu-h">Pagina</h2>
     <ul class="mlinks">
-      ${L("#", "Acasă", "")}${L("#ecuson", session ? "Ecusonul meu" : "Ecusonul tău și conectarea", coursePct() + "% din curs")}${L("#cum", "Cum funcționează", "")}${L("#ce", "Ce vei ști să faci", "")}${L("#certificat", "Certificatul", passed() + " din " + M.length + " teste")}${leader ? L("#rezultate", "Rezultatele echipei", "doar coordonator") : ""}${L("#contact", "Contact", "")}
+      ${L("#", "Acasă", "")}${L("#ecuson", session ? "Ecusonul meu" : "Ecusonul tău și conectarea", coursePct() + "% din curs")}${L("#cum", "Cum funcționează", "")}${L("#ce", "Ce vei ști să faci", "")}${L("#certificat", "Certificatul", passed() + " din " + M.length + " teste")}${leader ? L("#rezultate", "Rezultatele echipei", "doar coordonator") + L("admin/", "Panoul de administrare", "editează cursul") : ""}${L("#contact", "Contact", "")}
     </ul>
-    ${CH.map(c => `<h2 class="menu-h"><a href="#cap-${c.id}">${c.t}</a><span>${chPct(c)}%</span></h2>
-      <ul class="mlessons">${c.mods.map(i => `<li><a class="mles${state.done[i] ? " done" : ""}" href="#lectia-${i + 1}"><span>${M[i].t}</span><span class="pc">${state.done[i] ? ic("check") : ""}${pct(i)}%</span></a></li>`).join("")}</ul>`).join("")}
+    ${CH.map(c => `<h2 class="menu-h"><a href="#cap-${c.id}">${esc(c.t)}</a><span>${chPct(c)}%</span></h2>
+      <ul class="mlessons">${c.mods.map(i => `<li><a class="mles${state.done[K(i)] ? " done" : ""}" href="${lessonHref(i)}"><span>${esc(M[i].t)}</span><span class="pc">${state.done[K(i)] ? ic("check") : ""}${pct(i)}%</span></a></li>`).join("")}</ul>`).join("")}
   </div>`;
 }
 function openMenu(){
@@ -135,20 +145,20 @@ document.addEventListener("click", e => {
 function home(){
   view = "home";
   const nx = nextModule(), started = coursePct() > 0;
-  const cta = nx === null ? `<a class="btn dark" href="#certificat">Vezi certificatul</a>` : `<a class="btn dark" href="#lectia-${nx + 1}"><span>${started ? "Continuă: " + M[nx].t : "Începe cu prima lecție"}</span>${ic("arrow")}</a>`;
+  const cta = nx === null ? `<a class="btn dark" href="#certificat">Vezi certificatul</a>` : `<a class="btn dark" href="${lessonHref(nx)}"><span>${started ? "Continuă: " + esc(M[nx].t) : "Începe cu prima lecție"}</span>${ic("arrow")}</a>`;
   app.innerHTML = barHTML() + `
   <main>
   <section class="hero" aria-labelledby="h1">
-    <div class="hero-photo"><img id="heroImg" src="assets/dom-vedere-interioara.jpg" width="1920" height="1278" alt="Nava Domului romano-catolic Sfântul Gheorghe din Timișoara" fetchpriority="high"></div>
+    <div class="hero-photo"><img id="heroImg" src="${img(SITE.heroImg)}" width="1920" height="1278" alt="${esc(SITE.heroAlt)}" fetchpriority="high"></div>
     <div class="hero-copy wrap">
-      <h1 id="h1" class="rv">Școala Voluntarilor</h1>
-      <p class="lede rv" style="--i:1">Un curs scurt pentru voluntarii corului și ai evenimentelor pentru tineri din Timișoara: ${M.length} lecții, câte un test și un certificat la final.</p>
+      <h1 id="h1" class="rv">${esc(SITE.name)}</h1>
+      <p class="lede rv" style="--i:1">${esc(SITE.lede).replace("{n}", M.length)}</p>
     </div>
     <div class="stack" id="stack">
-      ${CH.map((c, k) => `<a class="folder" href="#cap-${c.id}" style="--k:${k};--tone:${c.tone};--tone-ink:${c.ink};--x:${[0, 26, 52, 8][k]}%"><span class="tab">${c.t}</span><span class="fmeta">${c.mods.length} lecții · ${chPct(c)}%</span></a>`).join("")}
+      ${CH.map((c, k) => `<a class="folder" href="#cap-${c.id}" style="--k:${k};--tone:${c.tone};--tone-ink:${c.ink};--x:${[0, 26, 52, 8, 38, 64][k % 6]}%"><span class="tab">${esc(c.t)}</span><span class="fmeta">${c.mods.length} lecții · ${chPct(c)}%</span></a>`).join("")}
       <div class="folder front" style="--k:${CH.length};--tone:var(--paper);--tone-ink:var(--paper-ink);--x:70%">
         <span class="tab">Mapa ta</span>
-        <div class="row">${cta}<p>${started ? `Ai parcurs <b>${coursePct()}%</b> din curs. ` : ""}Fiecare lecție durează în jur de 15 minute și se termină cu 5 întrebări.</p></div>
+        <div class="row">${cta}<p>${started ? `Ai parcurs <b>${coursePct()}%</b> din curs. ` : ""}Fiecare lecție durează în jur de 15 minute și se termină cu un test scurt.</p></div>
       </div>
     </div>
   </section>
@@ -156,11 +166,11 @@ function home(){
   <section class="sec wrap intro" aria-labelledby="h-intro">
     <div class="inner">
       <div class="grid top">
-        <h2 id="h-intro" class="rv">Pregătit pentru orice seară</h2>
-        <p class="note rv" style="--i:1">Concertele, slujbele de sărbători și întâlnirile cu tinerii merg bine când fiecare voluntar știe ce are de făcut. Cursul acesta te pregătește, în ritmul tău, de pe telefon.</p>
+        <h2 id="h-intro" class="rv">${esc(SITE.introTitle)}</h2>
+        <p class="note rv" style="--i:1">${esc(SITE.introText)}</p>
       </div>
       <div class="facts">
-        <div class="fact rv" style="--i:0"><b>${M.length} lecții</b><span>în patru capitole, de la primire la urgențe</span></div>
+        <div class="fact rv" style="--i:0"><b>${M.length} lecții</b><span>în ${CH.length} capitole, de la primire la urgențe</span></div>
         <div class="fact rv" style="--i:1"><b>15 minute</b><span>cât durează, în medie, o lecție</span></div>
         <div class="fact rv" style="--i:2"><b>4 din 5</b><span>răspunsuri corecte ca să treci testul</span></div>
         <div class="fact rv" style="--i:3"><b>1 certificat</b><span>după ce treci toate testele</span></div>
@@ -211,10 +221,10 @@ function home(){
 
   <section class="sec wrap topics" id="ce" aria-labelledby="h-topics">
     <div class="tcard rv">
-      <h2 id="h-topics">Ce vei ști să faci</h2>
-      <img src="assets/domul-romano-catolic-din-timisoara-2023-img.jpg" width="1920" height="1536" alt="Fațada Domului romano-catolic din Timișoara" loading="lazy">
-      <p class="cap">Domul din Piața Unirii, Timișoara, 2023</p>
-      <p>Să primești publicul&nbsp;· să găsești un copil pierdut&nbsp;· să ții culoarele libere&nbsp;· să suni corect la 112&nbsp;· să ajuți un om care leșină&nbsp;· să asculți pe cineva care suferă&nbsp;· să calmezi o ceartă&nbsp;· să protejezi tinerii&nbsp;· să faci poze cu acord&nbsp;· să ajuți o persoană în scaun cu rotile&nbsp;· să lucrezi în echipă</p>
+      <h2 id="h-topics">${esc(SITE.topicsTitle)}</h2>
+      ${SITE.topicsImg ? `<img src="${img(SITE.topicsImg)}" width="1920" height="1536" alt="${esc(SITE.topicsAlt)}" loading="lazy">
+      <p class="cap">${esc(SITE.topicsCap)}</p>` : ""}
+      <p>${String(SITE.topics || "").split("\n").map(s => s.trim()).filter(Boolean).map(esc).join("&nbsp;· ")}</p>
     </div>
   </section>
   </main>
@@ -225,13 +235,13 @@ function home(){
 function chapterHTML(c, k){
   return `<article class="chap wrap ${c.dark ? "dark-tone" : ""}" id="cap-${c.id}" style="--k:${k};--tone:${c.tone};--tone-ink:${c.ink};--tab:${c.tab};--tab-ink:${c.tabInk}" aria-labelledby="h-${c.id}">
     <div class="inner">
-      <div class="strip"><h3 class="tab" id="h-${c.id}">${c.t}</h3><span class="meta">${c.mods.length} lecții · ${chPct(c)}%</span></div>
+      <div class="strip"><h3 class="tab" id="h-${c.id}">${esc(c.t)}</h3><span class="meta">${c.mods.length} lecții · ${chPct(c)}%</span></div>
       <div class="grid body">
         <div class="frame rv"><div class="preview" data-preview aria-live="polite"></div>
-          <figure><img src="${c.img}" alt="${c.alt}" loading="lazy" width="1600" height="1000"><figcaption>${c.cap}</figcaption></figure></div>
+          ${c.img ? `<figure><img src="${img(c.img)}" alt="${esc(c.alt)}" loading="lazy" width="1600" height="1000"><figcaption>${esc(c.cap)}</figcaption></figure>` : ""}</div>
         <ul class="index" data-index>
           ${c.mods.map((i, n) => `<li class="rv" style="--i:${n}"><button class="mrow" data-m="${i}" type="button">
-            <strong>${M[i].t}</strong><span class="pc">${pct(i)}%</span><span class="bar2" style="--p:${pct(i) / 100}"></span><span class="d">${M[i].d}</span></button></li>`).join("")}
+            <strong>${esc(M[i].t)}</strong><span class="pc">${pct(i)}%</span><span class="bar2" style="--p:${pct(i) / 100}"></span><span class="d">${esc(M[i].d)}</span></button></li>`).join("")}
         </ul>
       </div>
     </div>
@@ -239,8 +249,8 @@ function chapterHTML(c, k){
 }
 
 function previewHTML(i){
-  const p = pct(i), label = state.done[i] ? `Test trecut, ${state.done[i]} din 5` : p ? `${p}% citit` : "Neînceput";
-  return `<h3>${M[i].t}</h3><p>${M[i].d}.</p><p><span class="pill">${label}</span></p>`;
+  const p = pct(i), sc = state.done[K(i)], label = sc ? `Test trecut, ${sc} din ${M[i].q.length}` : p ? `${p}% citit` : "Neînceput";
+  return `<h3>${esc(M[i].t)}</h3><p>${esc(M[i].d)}</p><p><span class="pill">${label}</span></p>`;
 }
 
 function wireHome(){
@@ -248,10 +258,11 @@ function wireHome(){
   document.querySelectorAll(".chap").forEach(ch => {
     const idx = ch.querySelector("[data-index]"), pv = ch.querySelector("[data-preview]");
     const show = i => { pv.classList.add("fade"); setTimeout(() => { pv.innerHTML = previewHTML(i); pv.classList.remove("fade"); }, reduced ? 0 : 120); };
-    const first = +idx.querySelector(".mrow").dataset.m;
+    const fr = idx.querySelector(".mrow"); if (!fr) return;
+    const first = +fr.dataset.m;
     pv.innerHTML = previewHTML(first);
     idx.querySelectorAll(".mrow").forEach(b => {
-      b.onclick = () => { location.hash = "lectia-" + (+b.dataset.m + 1); };
+      b.onclick = () => { location.hash = lessonHref(+b.dataset.m).slice(1); };
       const on = () => { idx.classList.add("dim"); idx.querySelectorAll(".mrow").forEach(x => x.classList.toggle("on", x === b)); show(+b.dataset.m); };
       b.addEventListener("pointerenter", e => { if (e.pointerType === "mouse") on(); });
       b.addEventListener("focus", on);
@@ -276,7 +287,7 @@ function paintBadge(){
     <span class="role">Voluntar · Timișoara</span>
     <div class="ring"><svg viewBox="0 0 100 100" aria-hidden="true"><circle class="bgc" cx="50" cy="50" r="${r}"/><circle class="fg" cx="50" cy="50" r="${r}" stroke-dasharray="${len}" stroke-dashoffset="${len}"/></svg>
       <div><b>${p}%</b><span>${passed()} din ${M.length} teste trecute</span></div></div>
-    <div class="chbars">${CH.map(c => `<div class="chbar" style="--p:${chPct(c) / 100}"><span>${c.t}</span><span>${chPct(c)}%</span><i></i></div>`).join("")}</div>`;
+    <div class="chbars">${CH.map(c => `<div class="chbar" style="--p:${chPct(c) / 100}"><span>${esc(c.t)}</span><span>${chPct(c)}%</span><i></i></div>`).join("")}</div>`;
   el.querySelector(".who").textContent = state.name || "Numele tău";
   requestAnimationFrame(() => requestAnimationFrame(() => { const fg = el.querySelector(".fg"); if (fg) fg.style.strokeDashoffset = len * (1 - p / 100); }));
 }
@@ -312,50 +323,50 @@ function footHTML(){
   return `<footer class="foot wrap" id="contact" aria-labelledby="h-foot">
     <svg class="scallop" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50${" a50 50 0 0 1 100 0".repeat(12)}Z"/></svg>
     <div class="back">
-      <div class="stamp"><img src="assets/timisoara-biserica-millennium.jpg" alt="Biserica Millennium din Fabric, Timișoara" loading="lazy" width="600" height="800"></div>
-      <h2 id="h-foot">Mulțumim că slujești</h2>
-      <p class="msgtxt">Fiecare concert și fiecare întâlnire cu tinerii se sprijină pe oameni care vin mai devreme și pleacă ultimii. Ai o întrebare sau o idee pentru o lecție nouă? Scrie-ne.</p>
+      ${SITE.stampImg ? `<div class="stamp"><img src="${img(SITE.stampImg)}" alt="${esc(SITE.stampAlt)}" loading="lazy" width="600" height="800"></div>` : ""}
+      <h2 id="h-foot">${esc(SITE.footTitle)}</h2>
+      <p class="msgtxt">${esc(SITE.footText)}</p>
       <div class="factions">
-        ${F("a", 'href="mailto:cornelmrn18@gmail.com"', "mail", "Scrie-ne", "cornelmrn18@gmail.com")}
+        ${SITE.email ? F("a", `href="mailto:${esc(SITE.email)}"`, "mail", "Scrie-ne", esc(SITE.email)) : ""}
         ${F("button", 'type="button" data-menu', "book", "Toate lecțiile", M.length + " lecții în " + CH.length + " capitole")}
         ${F("a", 'href="#ecuson"', "user", "Ecusonul tău", "progresul și conectarea")}
         ${F("a", 'href="#" data-top', "up", "Înapoi sus", "la începutul paginii")}
       </div>
       <p class="legal"><a href="privacy/">Politica de confidențialitate</a><a href="tos/">Termeni și condiții</a><span>Timișoara, România</span></p>
-      <p class="imprint">Școala Voluntarilor · 2026 · curs intern, gratuit</p>
+      <p class="imprint">${esc(SITE.name)} · ${new Date().getFullYear()} · curs intern, gratuit</p>
     </div>
-    <p class="credits">Fotografii: „Dom - vedere interioara” de Popescu Camelia, CC BY-SA 3.0; „April 2023 - Piața Unirii din Timișoara - img 03” și „Domul Romano-Catolic din Timișoara (2023) - IMG 06” de Chainwit., CC BY 4.0 / CC BY-SA 4.0; Piața Unirii 1937, Willy Pragher, Landesarchiv Baden-Württemberg, CC BY 3.0; „Piarist Church, Timișoara (2023) - img 12” de Chainwit., CC BY 4.0; „Timisoara, biserica Millennium” de Turbojet, CC BY-SA 4.0. Toate prin <a href="https://commons.wikimedia.org">Wikimedia Commons</a>. Fotografia corului: arhiva corului.</p>
+    ${SITE.credits ? `<p class="credits">${esc(SITE.credits)}</p>` : ""}
   </footer>`;
 }
 
 // ─── LECȚIA ───
 function lesson(i){
   view = "lesson";
-  const m = M[i], c = chOf(i), pos = c.mods.indexOf(i);
+  const m = M[i], c = chOf(i), pos = c.mods.indexOf(i), PASS = passMark(m), id = K(i);
   app.innerHTML = barHTML() + `<div class="readbar" id="readbar"></div>
   <main class="page wrap">
     <article class="sheet" aria-labelledby="h1">
-      <a class="back-link" href="#cap-${c.id}">${ic("back")}<span>Capitolul ${c.t}</span></a>
-      <h1 id="h1" class="rv">${m.t}</h1>
-      <div class="facts-line rv" style="--i:1"><span>Lecția ${pos + 1} din ${c.mods.length} în capitolul ${c.t}</span><span>~15 min</span><span class="pill" id="lpct">${pct(i)}%</span></div>
+      <a class="back-link" href="#cap-${c.id}">${ic("back")}<span>Capitolul ${esc(c.t)}</span></a>
+      <h1 id="h1" class="rv">${esc(m.t)}</h1>
+      <div class="facts-line rv" style="--i:1"><span>Lecția ${pos + 1} din ${c.mods.length} în capitolul ${esc(c.t)}</span><span>~15 min</span><span class="pill" id="lpct">${pct(i)}%</span></div>
       <div class="lesson-body" id="lbody"></div>
     </article>
     <form class="stub" id="quiz" aria-labelledby="h-quiz">
       <h2 id="h-quiz">Verifică ce ai învățat</h2>
-      <p>Cinci întrebări. Ai nevoie de cel puțin ${PASS} răspunsuri corecte.</p>
-      ${m.q.map((q, k) => `<fieldset class="q" id="q${k}"><legend>${q[0]}</legend>
-        ${shuffle(q[1].map((o, j) => j)).map(j => `<label><input type="radio" name="q${k}" id="q${k}o${j}" value="${j}" required> <span>${q[1][j]}</span></label>`).join("")}
+      <p>${m.q.length} întrebări. Ai nevoie de cel puțin ${PASS} răspunsuri corecte.</p>
+      ${m.q.map((q, k) => `<fieldset class="q" id="q${k}"><legend>${esc(q[0])}</legend>
+        ${shuffle(q[1].map((o, j) => j)).map(j => `<label><input type="radio" name="q${k}" id="q${k}o${j}" value="${j}" required> <span>${esc(q[1][j])}</span></label>`).join("")}
         <p class="why" hidden></p></fieldset>`).join("")}
       <div class="result" id="res" aria-live="polite"><button class="btn dark" type="submit">Verifică răspunsurile</button></div>
     </form>
     <nav class="next" aria-label="Lecții">
-      ${i > 0 ? `<a class="btn quiet" href="#lectia-${i}">${ic("back")}<span>${M[i - 1].t}</span></a>` : "<span></span>"}
-      ${i + 1 < M.length ? `<a class="btn quiet" href="#lectia-${i + 2}"><span>${M[i + 1].t}</span>${ic("arrow")}</a>` : `<button class="btn quiet" type="button" data-menu>${ic("book")}<span>Toate lecțiile</span></button>`}
+      ${i > 0 ? `<a class="btn quiet" href="${lessonHref(i - 1)}">${ic("back")}<span>${esc(M[i - 1].t)}</span></a>` : "<span></span>"}
+      ${i + 1 < M.length ? `<a class="btn quiet" href="${lessonHref(i + 1)}"><span>${esc(M[i + 1].t)}</span>${ic("arrow")}</a>` : `<button class="btn quiet" type="button" data-menu>${ic("book")}<span>Toate lecțiile</span></button>`}
     </nav>
   </main>`;
   // split the lesson into parts at each heading, so reading can be measured part by part
   const body = document.getElementById("lbody"), tmp = document.createElement("div");
-  tmp.innerHTML = m.html;
+  tmp.innerHTML = window.cleanHTML(m.html);
   let part = null;
   [...tmp.children].forEach(el => {
     if (!part || el.tagName === "H3") { part = document.createElement("section"); part.className = "part rv"; body.appendChild(part); }
@@ -366,7 +377,7 @@ function lesson(i){
     if (!e.isIntersecting) return;
     seen.add(e.target); io.unobserve(e.target);
     const f = seen.size / parts.length;
-    if (f > (state.read[i] || 0)) { state.read[i] = f; save(); syncSoon(); document.getElementById("lpct").textContent = pct(i) + "%"; }
+    if (f > (state.read[id] || 0)) { state.read[id] = f; save(); syncSoon(); document.getElementById("lpct").textContent = pct(i) + "%"; }
   }), {rootMargin: "0px 0px -35% 0px"});
   parts.forEach(p => io.observe(p));
   const bar = document.getElementById("readbar");
@@ -381,16 +392,16 @@ function lesson(i){
       box.className = "q " + (ok ? "right" : "wrong");
       box.querySelectorAll("label").forEach(l => { const v = +l.querySelector("input").value; l.classList.toggle("pick", v === pick); l.classList.toggle("answer", !ok && v === q[2]); });
       why.hidden = false;
-      why.innerHTML = (ok ? "<b>Corect.</b> " : `<b>Răspunsul corect:</b> ${q[1][q[2]]}. `) + q[3];
+      why.innerHTML = (ok ? "<b>Corect.</b> " : `<b>Răspunsul corect:</b> ${esc(q[1][q[2]])}. `) + esc(q[3]);
     });
     const res = document.getElementById("res");
     if (score >= PASS) {
-      state.done[i] = Math.max(score, state.done[i] || 0); state.read[i] = 1; save(); sync();
+      state.done[id] = Math.max(score, state.done[id] || 0); state.read[id] = 1; save(); sync();
       document.getElementById("lpct").textContent = "100%";
       const nx = nextModule();
-      res.innerHTML = `<p>${score} din 5. Ai trecut lecția.</p>${nx === null ? `<a class="btn dark" href="#certificat">Vezi certificatul</a>` : `<a class="btn dark" href="#lectia-${nx + 1}">Următoarea: ${M[nx].t}</a>`}`;
+      res.innerHTML = `<p>${score} din ${m.q.length}. Ai trecut lecția.</p>${nx === null ? `<a class="btn dark" href="#certificat">Vezi certificatul</a>` : `<a class="btn dark" href="${lessonHref(nx)}"><span>Următoarea: ${esc(M[nx].t)}</span>${ic("arrow")}</a>`}`;
     } else {
-      res.innerHTML = `<p>${score} din 5. Mai ai nevoie de ${PASS - score}.</p><span class="small" style="color:var(--paper-muted)">Citește explicațiile de mai sus și încearcă din nou.</span><button class="btn dark" type="button" id="again">Încearcă din nou</button>`;
+      res.innerHTML = `<p>${score} din ${m.q.length}. Mai ai nevoie de ${PASS - score}.</p><span class="small" style="color:var(--paper-muted)">Citește explicațiile de mai sus și încearcă din nou.</span><button class="btn dark" type="button" id="again">Încearcă din nou</button>`;
       document.getElementById("again").onclick = () => { lesson(i); document.getElementById("quiz").scrollIntoView(); };
     }
     res.scrollIntoView({behavior: reduced ? "auto" : "smooth", block: "center"});
@@ -407,14 +418,14 @@ async function teamView(){
   const {data, error} = await sb.from("results").select("*").order("updated", {ascending: false});
   if (view !== "team") return;
   const rows = data || [];
-  const rp = sc => Math.round(M.reduce((s, m, i) => s + (sc[i] ? 100 : 70 * Math.min(1, (sc.read || {})[i] || 0)), 0) / M.length);
+  const rp = (sc, rd) => Math.round(M.reduce((s, m) => s + (sc[m.id] ? 100 : 70 * Math.min(1, rd[m.id] || 0)), 0) / M.length);
   document.getElementById("tbody").innerHTML = error ? `<p style="margin-top:20px">Nu am putut încărca rezultatele: ${esc(error.message)}</p>` : `
     <p style="margin-top:20px">${rows.length} voluntari au început cursul. Coloanele arată scorul cel mai bun la fiecare test, din 5.</p>
     <p style="margin-top:12px"><button class="btn dark" type="button" id="refresh">Reîncarcă</button></p>
     ${rows.length ? `<div class="tablewrap"><table><thead><tr><th>Voluntar</th><th>Curs</th><th>Teste</th>${M.map((m, i) => `<th title="${esc(m.t)}">L${i + 1}</th>`).join("")}<th>Activ</th></tr></thead><tbody>
-    ${rows.map(r => { const sc = r.scores || {}, n = Object.keys(sc).filter(k => k !== "read").length; return `<tr>
-      <td>${esc(r.name || r.email || "Voluntar fără nume")}</td><td>${rp(sc)}%</td><td>${n}/${M.length}</td>
-      ${M.map((m, i) => `<td>${sc[i] ? sc[i] : "–"}</td>`).join("")}
+    ${rows.map(r => { const sc = fixKeys(r.scores), rd = fixKeys((r.scores || {}).read), n = M.filter(m => sc[m.id]).length; return `<tr>
+      <td>${esc(r.name || r.email || "Voluntar fără nume")}</td><td>${rp(sc, rd)}%</td><td>${n}/${M.length}</td>
+      ${M.map(m => `<td>${sc[m.id] ? sc[m.id] : "–"}</td>`).join("")}
       <td>${new Date(r.updated).toLocaleDateString("ro-RO")}</td></tr>`; }).join("")}
     </tbody></table></div>` : `<p style="margin-top:20px">Încă nu a trimis nimeni rezultate. Când un voluntar conectat trece primul test, apare aici.</p>`}`;
   const rf = document.getElementById("refresh");
@@ -424,7 +435,7 @@ async function teamView(){
 // ─── CERTIFICATUL ───
 function cert(){
   view = "cert";
-  const all = passed() === M.length;
+  const all = M.length > 0 && passed() === M.length;
   const date = new Date().toLocaleDateString("ro-RO", {day: "numeric", month: "long", year: "numeric"});
   app.innerHTML = barHTML() + `<main class="page wrap"><article class="sheet" aria-labelledby="h1">
     <a class="back-link" href="#">${ic("back")}<span>Înapoi la curs</span></a>
@@ -434,8 +445,8 @@ function cert(){
     <div class="cert">
       <span>Certificat de absolvire</span>
       <div class="who" id="who"></div>
-      <p>a absolvit cursul <b>Școala Voluntarilor</b>, cu toate cele ${M.length} lecții trecute.</p>
-      <p class="small" style="color:var(--paper-muted)">${date} · Coordonator echipă: ______________</p>
+      <p>a absolvit cursul <b>${esc(SITE.name)}</b>, cu toate cele ${M.length} lecții trecute.</p>
+      <p class="small" style="color:var(--paper-muted)">${date} · Coordonator echipă: ${esc(SITE.coordinator) || "______________"}</p>
     </div>
     <p style="margin-top:16px">Fă o captură de ecran și trimite-o coordonatorului.</p>` : `<p style="margin-top:20px">Ai trecut ${passed()} din ${M.length} teste. Certificatul apare aici după ultimul test.</p><p style="margin-top:20px"><a class="btn dark" href="#">Înapoi la lecții</a></p>`}
   </article></main>`;
@@ -473,8 +484,10 @@ let lastView = "";
 function route(){
   closeMenu();
   const h = location.hash.slice(1);
-  const lm = /^lectia-(\d+)$/.exec(h);
-  if (lm && M[+lm[1] - 1]) { scrollFns = []; lesson(+lm[1] - 1); scrollTo(0, 0); }
+  const lm = /^lectia-(.+)$/.exec(h);
+  // #lectia-m3, or an old link #lectia-3 (old links counted lessons in modules.js order, which the m-ids keep)
+  const lid = lm && (/^\d+$/.test(lm[1]) ? "m" + lm[1] : lm[1]), li = lm ? M.findIndex(m => m.id === lid) : -1;
+  if (li >= 0) { scrollFns = []; lesson(li); scrollTo(0, 0); }
   else if (h === "rezultate") { scrollFns = []; teamView(); scrollTo(0, 0); }
   else if (h === "certificat") { scrollFns = []; cert(); scrollTo(0, 0); }
   else {
@@ -486,3 +499,11 @@ function route(){
 }
 addEventListener("hashchange", route);
 route();
+
+// newer content saved from the admin panel replaces the bundled copy; a lesson in progress is left alone
+if (sb) sb.from("site_content").select("data,updated_at").eq("id", "main").maybeSingle().then(({data}) => {
+  if (!data || !data.data || (cached && cached.updated_at === data.updated_at)) return;
+  try { localStorage.setItem(CKEY, JSON.stringify(data)); } catch(e){}
+  cached = data; applyContent(data.data);
+  if (view !== "lesson") { lastView = ""; route(); }
+}).catch(() => {});
