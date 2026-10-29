@@ -404,3 +404,6 @@ input{caret-color:var(--accent)}
   .menu-in{padding-inline:12px}
   .mlink,.mles{padding:12px 10px}
 }
+
+.scallop{height:clamp(16px,4.2vw,50px)}
+.menu-top .mark{white-space:nowrap;font-size:clamp(1rem,.9rem + 1vw,1.625rem)}
