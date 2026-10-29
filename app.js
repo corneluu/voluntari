@@ -17,11 +17,11 @@ const CH = [
   {id:"echipa", t:"Echipa", d:"Cine suntem, ce spune legea și cum lucrăm împreună.", mods:[0,1,5], tone:"var(--f1)", ink:"var(--paper-ink)", tab:"var(--f4)", tabInk:"var(--ink)",
    img:"assets/april-2023-piata-unirii-din-timisoara-img.jpg", alt:"Piața Unirii din Timișoara, cu Domul romano-catolic", cap:"Piața Unirii, Timișoara, 2023"},
   {id:"concertul", t:"Concertul", d:"Primirea publicului, focul și aglomerația, oamenii care au nevoie de ajutor.", mods:[3,8,13], tone:"var(--f2)", ink:"var(--accent-ink)", tab:"var(--paper)", tabInk:"var(--paper-ink)",
-   img:"assets/the-arcadian-singers-of-oxford-40th-anniversary.jpg", alt:"Un cor și o orchestră aplaudați la finalul unui concert într-o biserică", cap:"La finalul unui concert de cor, Oxford, 2016"},
+   img:"assets/corul-cantand.jpg", alt:"Membrii corului cântând împreună într-o capelă, în fața dirijorului", cap:"Corul, cântând într-o capelă"},
   {id:"tinerii", t:"Tinerii", d:"Evenimentele pentru adolescenți și tot ce îi ține în siguranță.", mods:[4,2,7,10,12], tone:"var(--f3)", ink:"var(--accent-ink)", tab:"var(--bg)", tabInk:"var(--ink)",
    img:"assets/landesarchiv-baden-wuerttemberg-staatsarchiv-freiburg-w-134.jpg", alt:"Piața Unirii și Domul din Timișoara într-o fotografie alb-negru din 1937", cap:"Piața Unirii, aprilie 1937"},
   {id:"greu", t:"Când e greu", d:"Urgențe, oameni în suferință și conflicte. Ce faci în primele minute.", mods:[6,9,11], tone:"var(--f4)", ink:"var(--ink)", tab:"var(--f2)", tabInk:"var(--accent-ink)", dark:true,
-   img:"assets/dulmen-st-viktor-kirche-innenansicht-2020-6115.jpg", alt:"Interiorul unei biserici în lumina lumânărilor, seara", cap:"O biserică seara, la lumina lumânărilor"},
+   img:"assets/piarist-church-timisoara-2023-img-12.jpg", alt:"Biserica Piariștilor din Timișoara, cu turnul ei înalt", cap:"Biserica Piariștilor, Timișoara, 2023"},
 ];
 const chOf = i => CH.find(c => c.mods.includes(i));
 
@@ -262,7 +262,7 @@ function footHTML(){
   return `<footer class="foot wrap" aria-labelledby="h-foot">
     <svg class="scallop" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50${" a50 50 0 0 1 100 0".repeat(12)}Z"/></svg>
     <div class="back">
-      <div class="stamp"><img src="assets/st-george-s-cathedral-timisoara-august-2022.jpg" alt="Domul Sfântul Gheorghe din Timișoara" loading="lazy" width="600" height="800"></div>
+      <div class="stamp"><img src="assets/timisoara-biserica-millennium.jpg" alt="Biserica Millennium din Fabric, Timișoara" loading="lazy" width="600" height="800"></div>
       <div class="halves">
         <div><h2 id="h-foot">Mulțumim că slujești</h2>
           <div class="msgtxt"><p>Fiecare concert și fiecare întâlnire cu tinerii se sprijină pe oameni care vin mai devreme și pleacă ultimii.</p><p>Ai o întrebare sau o idee pentru o lecție nouă? Scrie-ne.</p></div></div>
@@ -275,7 +275,7 @@ function footHTML(){
       </div>
       <p class="imprint">Școala Voluntarilor · 2026 · curs intern, gratuit</p>
     </div>
-    <p class="credits">Fotografii: „Dom - vedere interioara” de Popescu Camelia, CC BY-SA 3.0; „April 2023 - Piața Unirii din Timișoara - img 03” și „Domul Romano-Catolic din Timișoara (2023) - IMG 06” de Chainwit., CC BY 4.0 / CC BY-SA 4.0; „The Arcadian Singers of Oxford 40th anniversary concert” de Jpbowen, CC BY-SA 4.0; Piața Unirii 1937, Willy Pragher, Landesarchiv Baden-Württemberg, CC BY 3.0; „Dülmen, St.-Viktor-Kirche, Innenansicht” de Dietmar Rabich, CC BY-SA 4.0; „St. George's Cathedral, Timișoara, August 2022” de Vacant0, CC BY-SA 4.0. Toate prin <a href="https://commons.wikimedia.org">Wikimedia Commons</a>.</p>
+    <p class="credits">Fotografii: „Dom - vedere interioara” de Popescu Camelia, CC BY-SA 3.0; „April 2023 - Piața Unirii din Timișoara - img 03” și „Domul Romano-Catolic din Timișoara (2023) - IMG 06” de Chainwit., CC BY 4.0 / CC BY-SA 4.0; Piața Unirii 1937, Willy Pragher, Landesarchiv Baden-Württemberg, CC BY 3.0; „Piarist Church, Timișoara (2023) - img 12” de Chainwit., CC BY 4.0; „Timisoara, biserica Millennium” de Turbojet, CC BY-SA 4.0. Toate prin <a href="https://commons.wikimedia.org">Wikimedia Commons</a>. Fotografia corului: arhiva corului.</p>
   </footer>`;
 }
 
