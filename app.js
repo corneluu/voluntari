@@ -12,6 +12,10 @@ const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.f
 // ─── SUPABASE (login + rezultate) ───
 const sb = C.SUPABASE_URL && C.SUPABASE_ANON_KEY && window.supabase ? window.supabase.createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY) : null;
 let session = null, leader = false, team = [], view = "home", queue = Promise.resolve(), loginMsg = "";
+// a failed login link comes back as #error=...; explain it instead of failing silently
+if (/error_code=otp_expired/.test(location.hash)) loginMsg = "Linkul a expirat sau a fost deja folosit. Cere un link nou mai jos și deschide-l o singură dată.";
+else if (/[#&]error=/.test(location.hash)) loginMsg = "Conectarea nu a reușit. Încearcă din nou.";
+if (loginMsg) history.replaceState(null, "", location.pathname);
 const sync = () => {
   if (!sb || !session) return;
   queue = queue.then(() => sb.from("results").upsert({user_id: session.user.id, name: state.name, email: session.user.email, scores: state.done, updated: new Date().toISOString()}))
