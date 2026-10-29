@@ -204,6 +204,219 @@ q:[
 ["Persoana e inconștientă, dar respiră. Ce faci?",["O lași cum e","O pui în poziția laterală de siguranță și suni la 112","O scuturi tare","O duci singur la spital"],1,"Poziția laterală ține căile respiratorii libere."],
 ["Se dă alarma de incendiu în timpul unui eveniment pentru tineri. Ce faci?",["Strângi lucrurile întâi","Îi conduci calm la punctul de adunare și îi numeri","Îi lași să iasă cum vor","Verifici dacă e alarmă falsă"],1,"Numărătoarea îți arată dacă lipsește cineva."],
 ["Cine trebuie să știe dinainte de alergiile tinerilor?",["Nimeni","Coordonatorul, din fișa completată de părinți","Doar tinerii","Ceilalți participanți"],1,"Informația de sănătate se adună dinainte și e confidențială."]
+]},
+{t:"Copil pierdut", d:"Ce faci când un copil sau o persoană vulnerabilă se rătăcește", html:`
+<p>La concertele de Crăciun și de Paște vin multe familii. Un copil pierdut sau o persoană în vârstă confuză sunt situații care chiar se întâmplă.</p>
+<h3>Înainte de eveniment</h3>
+<ul>
+<li>Coordonatorul stabilește <b>un singur punct pentru persoane pierdute</b> (de exemplu masa de informații).</li>
+<li>Toți voluntarii știu unde este acest punct.</li>
+</ul>
+<h3>Ai găsit un copil singur</h3>
+<ul>
+<li>Rămâi calm și vorbește-i liniștit, la nivelul ochilor lui.</li>
+<li>Îl duci la punctul stabilit și anunți imediat coordonatorul și ceilalți voluntari.</li>
+<li><b>Nu rămâi singur cu copilul.</b> E nevoie de încă un adult lângă voi.</li>
+<li>Nu ieși cu copilul din clădire și nu îl duci niciodată la o mașină.</li>
+<li>La anunțuri <b>nu spui numele copilului</b>. Spui doar: „Părintele unui copil este rugat să vină la masa de informații.”</li>
+</ul>
+<h3>Când vine adultul</h3>
+<ul>
+<li>Verifici că e chiar părintele: întrebi cum îl cheamă pe copil și urmărești cum reacționează copilul.</li>
+<li>Notezi ora găsirii, ora predării și numele adultului. Un al doilea voluntar e martor.</li>
+</ul>
+<h3>Un părinte îți spune că și-a pierdut copilul</h3>
+<ul>
+<li>Iei repede descrierea: vârstă, haine, unde a fost văzut ultima dată.</li>
+<li>Anunți coordonatorul. Voluntarii supraveghează ieșirile și caută prin clădire.</li>
+<li>Dacă nu e găsit repede, suni la <b>112</b>.</li>
+</ul>
+<div class="tip">La fel procedezi cu o persoană în vârstă confuză sau cu o persoană cu dizabilități care s-a rătăcit.</div>`,
+q:[
+["Ai găsit un copil singur, care plânge. Ce faci?",["Îl duci la mașina ta, să stea la căldură","Îl duci la punctul pentru persoane pierdute, cu încă un adult lângă voi, și anunți coordonatorul","Îl lași acolo, părinții vin sigur","Ieși cu el afară să-i cauți părinții"],1,"Punctul stabilit, doi adulți și coordonatorul anunțat."],
+["Cum faci anunțul la microfon?",["Spui numele complet al copilului","Descrii copilul și spui unde stă","„Părintele unui copil este rugat să vină la masa de informații”","Nu faci niciun anunț"],2,"Numele copilului nu se anunță public."],
+["Un adult spune că e tatăl copilului. Ce faci înainte să i-l dai?",["I-l dai imediat","Îl întrebi cum îl cheamă pe copil și urmărești reacția copilului","Ceri buletinul și faci poză","Îl trimiți la poliție"],1,"O verificare scurtă îl protejează pe copil."],
+["Ce notezi după predarea copilului?",["Nimic","Ora găsirii, ora predării și numele adultului, cu un martor","Doar numele copilului, pe grupul echipei","Adresa părinților"],1,"O notă scurtă, cu martor, te protejează și pe tine."],
+["Un copil raportat dispărut nu e găsit repede. Ce faci?",["Mai aștepți o oră","Suni la 112","Postezi pe Facebook","Închei evenimentul"],1,"Când un copil lipsește, nu se așteaptă."]
+]},
+{t:"Foc și aglomerație", d:"Lumânări, capacitatea bisericii și ieșirile la sărbători", html:`
+<p>Noaptea de Înviere și concertele de Crăciun înseamnă biserici pline și sute de lumânări aprinse. Este cel mai mare risc de incendiu din an.</p>
+<h3>Lumânările</h3>
+<ul>
+<li>Lumânările aprinse stau departe de haine, păr, robele corului, icoane, perdele și partituri.</li>
+<li>Fii atent la copiii care țin lumânări.</li>
+<li>Regulile se spun la început și se repetă la final.</li>
+<li>După eveniment verifici că <b>nicio lumânare nu a rămas aprinsă</b> nesupravegheată.</li>
+</ul>
+<h3>Câți oameni intră</h3>
+<ul>
+<li>Nu lași să intre mai mulți oameni decât permite clădirea. Biserica trebuie să poată fi evacuată.</li>
+<li><b>Culoarele și ieșirile rămân libere</b>, chiar dacă unii se supără.</li>
+</ul>
+<h3>Fluxul de oameni</h3>
+<ul>
+<li>Intrarea și ieșirea, separate când se poate.</li>
+<li>Câte un voluntar la fiecare ieșire.</li>
+<li>Voluntari în punctele înguste: uși, trepte, locul unde se aprind lumânările.</li>
+</ul>
+<h3>Stingătorul</h3>
+<p>Știi unde e stingătorul și verifici înainte că există. Inspectoratul pentru Situații de Urgență (ISU) verifică bisericile mai ales înainte de Paște.</p>
+<div class="tip">Incendiu: dai alarma, suni la 112, conduci oamenii calm spre ieșiri. Stingi doar un foc mic, și doar dacă ai ieșirea în spate.</div>`,
+q:[
+["O fetiță ține lumânarea aprinsă aproape de părul fetei din față. Ce faci?",["Nimic, e treaba părinților","Te apropii calm și o ajuți să țină lumânarea mai departe","Îi stingi lumânarea fără o vorbă","Strigi la ea"],1,"Calm, imediat și fără panică."],
+["Biserica e plină, dar oamenii vor să stea pe culoar. Ce faci?",["Îi lași, e sărbătoare","Le explici politicos că culoarele trebuie să rămână libere pentru siguranță","Aduci scaune pe culoar","Închizi o ușă de ieșire ca să faci loc"],1,"Culoarele libere salvează vieți la o evacuare."],
+["Ce verifici la finalul evenimentului?",["Doar banii din cutie","Că nicio lumânare nu a rămas aprinsă","Că s-au stins luminile din curte","Nimic"],1,"Multe incendii pornesc după ce lumea pleacă."],
+["Unde pui voluntari în timpul slujbei de Înviere?",["Toți în față, lângă cor","La ieșiri și în punctele înguste: uși, trepte, locul unde se aprind lumânările","Afară, la parcare","Nicăieri, e slujbă"],1,"Acolo se adună oamenii și acolo apar problemele."],
+["Izbucnește un incendiu mare. Ce faci primul?",["Încerci să-l stingi singur","Dai alarma, suni la 112 și conduci oamenii spre ieșiri","Strângi lucrurile corului","Filmezi"],1,"Oamenii întâi. Un foc mare îl sting pompierii."]
+]},
+{t:"Primul ajutor psihologic", d:"Privește, Ascultă, Conectează: cum ajuți un om în suferință", html:`
+<p>La concerte vin și oameni în doliu, iar la orice eveniment cineva poate primi o veste rea sau poate fi speriat după un incident. Organizația Mondială a Sănătății folosește un model simplu în trei pași.</p>
+<h3>1. Privește</h3>
+<ul>
+<li>Ce s-a întâmplat? E cineva în pericol sau rănit?</li>
+<li>Are omul nevoie de ceva practic: apă, un scaun, un telefon?</li>
+<li>Cum reacționează: plânge, tremură, e confuz?</li>
+</ul>
+<h3>2. Ascultă</h3>
+<ul>
+<li>Spune cine ești: „Sunt voluntar aici. Te pot ajuta cu ceva?”</li>
+<li>Ascultă cu toată atenția și acceptă ce simte, fără să judeci.</li>
+<li>Întreabă de ce are nevoie și ce îl îngrijorează.</li>
+</ul>
+<h3>3. Conectează</h3>
+<ul>
+<li>Ajută-l să ia legătura cu familia sau prietenii.</li>
+<li>Leagă-l de ajutor practic: preotul, un transport acasă, un medic.</li>
+<li>Ajută-l să își rezolve singur problemele. Nu le preiei tu pe toate.</li>
+</ul>
+<h3>Ce nu faci</h3>
+<ul>
+<li>Nu insiști să povestească ce s-a întâmplat.</li>
+<li>Nu promiți ce nu poți face.</li>
+<li>Nu faci pe psihologul. Rămâi lângă el până vine cineva care îl poate ajuta.</li>
+</ul>
+<div class="tip">Uneori ajutorul înseamnă doar o pătură, un loc liniștit sau un telefon dat unei rude.</div>`,
+q:[
+["Care sunt cei trei pași ai primului ajutor psihologic?",["Fugi, strigă, sună","Privește, ascultă, conectează","Întreabă, notează, raportează","Calmează, consolează, pleacă"],1,"Modelul OMS: Privește, Ascultă, Conectează."],
+["O doamnă plânge în curtea bisericii după o slujbă de pomenire. Cum începi?",["„Nu mai plânge, totul va fi bine”","„Sunt voluntar aici. Te pot ajuta cu ceva?”","O întrebi ce s-a întâmplat exact","O lași în pace"],1,"Te prezinți și îi oferi ajutor, fără să forțezi nimic."],
+["Ce înseamnă pasul „Conectează”?",["Îi dai numărul tău personal","O ajuți să ia legătura cu familia, preotul sau alt ajutor practic","O adaugi pe grupul echipei","Îi faci o poză"],1,"Îl legi de oamenii și ajutorul de care are nevoie."],
+["Ce NU faci?",["Oferi apă","Rămâi lângă ea până vine cineva","Insiști să povestească tot ce s-a întâmplat","Asculți"],2,"Omul povestește doar dacă vrea."],
+["Un adolescent e speriat după ce a văzut un accident. Ce ajută cel mai mult?",["Îi explici în detaliu ce s-a întâmplat","Un loc liniștit, un adult calm lângă el și anunțarea părinților","Îl lași singur să se liniștească","Îi spui că nu a fost nimic grav"],1,"Siguranță, calm și legătura cu familia."]
+]},
+{t:"Sănătatea emoțională a adolescenților", d:"Semne de alarmă și unde ceri ajutor", html:`
+<p>Îi vezi pe tineri în fiecare săptămână. Poți fi primul adult care observă că ceva nu e în regulă.</p>
+<h3>Semne de alarmă (după UNICEF)</h3>
+<p>Contează mai ales când durează câteva săptămâni:</p>
+<ul>
+<li>tristețe sau retragere de la ceilalți mai mult de două săptămâni;</li>
+<li>vorbește despre autovătămare sau sinucidere, ori se rănește;</li>
+<li>frică sau panică bruscă și puternică;</li>
+<li>bătăi sau dorința de a-i răni pe alții;</li>
+<li>schimbări mari la mâncare, sau sport excesiv;</li>
+<li>griji care îl împiedică să-și trăiască viața de zi cu zi;</li>
+<li>alcool sau droguri;</li>
+<li>schimbări mari de dispoziție sau de personalitate.</li>
+</ul>
+<h3>Ce faci</h3>
+<ul>
+<li>Îi arăți că ești acolo și că îl asculți. Nu judeci și nu minimalizezi („lasă, trece”).</li>
+<li><b>Nu pui diagnostice.</b> Spui ce ai observat coordonatorului, ca la orice problemă de siguranță.</li>
+<li>Nu promiți că păstrezi secretul.</li>
+<li>Dacă tânărul e în pericol (vorbește că vrea să-și facă rău), acționezi imediat: nu îl lași singur, anunți coordonatorul, suni la <b>112</b> dacă pericolul e acum.</li>
+</ul>
+<h3>Numere utile</h3>
+<ul>
+<li><b>112</b> – pericol imediat.</li>
+<li><b>116 111</b> – Telefonul Copilului, gratuit, pentru copii și adolescenți.</li>
+</ul>`,
+q:[
+["Un tânăr din grup e retras și trist de aproape o lună. Ce faci?",["Nimic, e adolescent","Îi arăți că ești acolo să-l asculți și spui coordonatorului ce ai observat","Îi spui ce boală crezi că are","Le spui celorlalți tineri"],1,"Observi, asculți și dai mai departe pe calea stabilită. Nu pui diagnostice."],
+["Un tânăr îți spune că se gândește să-și facă rău. Ce faci?",["Promiți că nu spui nimănui","Îi spui că exagerează","Nu îl lași singur, anunți imediat coordonatorul și suni la 112 dacă pericolul e acum","Îl trimiți acasă"],2,"Pericolul pentru viață are prioritate față de orice secret."],
+["Ce e 116 111?",["Pompierii","Telefonul Copilului, gratuit","Poliția locală","Salvamontul"],1,"Copiii și adolescenții pot suna gratuit la 116 111."],
+["Care dintre acestea e un semn de alarmă?",["Râde cu prietenii","Vine la timp","Vorbește despre autovătămare","E obosit după un concert"],2,"Orice discuție despre autovătămare se ia în serios."],
+["Ce răspuns e potrivit când un tânăr îți spune că e foarte trist?",["„Lasă, trece”","„Îmi pare rău că te simți așa. Vrei să-mi povestești?”","„Și eu am probleme mai mari”","„Nu te mai gândi”"],1,"Validezi ce simte și îi oferi atenție."]
+]},
+{t:"Calmarea unei persoane agitate", d:"Cum oprești un conflict fără să-l agravezi", html:`
+<p>Concertele din biserică sunt deschise tuturor. Pot apărea certuri pentru locuri, persoane băute sau oameni cu probleme psihice.</p>
+<h3>Prevenția</h3>
+<ul>
+<li>O primire caldă la ușă previne multe probleme.</li>
+<li>Dacă cineva pare agitat, îl anunți discret pe coordonator.</li>
+</ul>
+<h3>Când cineva e furios</h3>
+<ul>
+<li>Întâi scazi tensiunea. Nu poți discuta logic cu cineva în plin nervi.</li>
+<li>Vorbești calm, rar și încet. Propoziții scurte și respectuoase.</li>
+<li>Nu te cerți, nu ții predici, nu vorbești de sus.</li>
+<li>Păstrezi distanța, mâinile la vedere, și nu îi blochezi ieșirea.</li>
+<li>Nu îl înconjurați mai mulți. Asta îl agită și mai tare.</li>
+<li>Îi dai o alegere și o limită: „Puteți rămâne, dacă păstrăm liniștea.” Îl conduci, dacă se poate, mai departe de public.</li>
+</ul>
+<h3>Lucrați în doi</h3>
+<p>Unul vorbește, celălalt stă aproape. Nu acționezi singur. Coordonatorul și preotul sunt informați.</p>
+<div class="tip">Amenințări, armă sau violență: te retragi și suni la <b>112</b>. Nu imobilizezi pe nimeni.</div>`,
+q:[
+["Doi spectatori se ceartă tare pentru un loc. Ce faci primul?",["Le spui că se fac de râs","Te apropii calm, vorbești încet și oferi o soluție, de exemplu alt loc","Chemi toți voluntarii în jurul lor","Îi dai afară pe amândoi"],1,"Calmul tău scade tensiunea."],
+["Un bărbat băut vorbește tare în timpul concertului. Ce faci?",["Îl tragi de braț afară","Îl abordezi calm, împreună cu un coleg, și îi spui că poate rămâne dacă păstrează liniștea","Îl certi în fața tuturor","Oprești concertul"],1,"Alegere plus limită, spuse cu respect, de doi oameni."],
+["Unde stai când vorbești cu o persoană furioasă?",["Foarte aproape, să te audă","La distanță sigură, fără să-i blochezi ieșirea","Între ea și ușă","În spatele ei"],1,"Un om care se simte blocat devine mai agresiv."],
+["De ce nu e bine să o înconjurați mai mulți voluntari?",["Pentru că e nepoliticos","Pentru că o agită și mai tare","Pentru că nu e nevoie de nimeni","Pentru că pierdeți concertul"],1,"Unul vorbește, unul stă aproape. Atât."],
+["Persoana scoate un cuțit. Ce faci?",["Încerci să i-l iei","Te retragi, îndepărtezi oamenii și suni la 112","Continui să discuți","Îl filmezi"],1,"Siguranța ta și a publicului e pe primul loc."]
+]},
+{t:"Foto, video și GDPR", d:"Imaginea oamenilor, mai ales a minorilor", html:`
+<p>Concertele și evenimentele pentru tineri se filmează și se postează. Imaginea unei persoane este <b>dată personală</b>, protejată de regulamentul european GDPR.</p>
+<h3>Evenimente mari</h3>
+<ul>
+<li>La intrare se afișează un anunț: se fac fotografii, de ce și unde vor fi folosite.</li>
+<li>Pozele generale cu publicul sunt în regulă dacă oamenii au fost informați.</li>
+</ul>
+<h3>Prim-planuri și evenimente mici</h3>
+<ul>
+<li>Ceri acordul persoanei.</li>
+<li>O idee simplă: ecusoane colorate. Verde înseamnă că se poate fotografia, roșu înseamnă că nu.</li>
+</ul>
+<h3>Minorii</h3>
+<ul>
+<li>Pentru pozele cu tineri sub 16 ani e nevoie de <b>acordul scris al părinților</b>.</li>
+<li>Nu publici numele complet al unui tânăr lângă poza lui.</li>
+<li>Folosești doar telefoanele și conturile oficiale ale bisericii sau ale corului.</li>
+</ul>
+<h3>Ștergerea</h3>
+<p>Dacă cineva cere să fie ștearsă o poză cu el, o ștergi și anunți coordonatorul.</p>
+<div class="tip">Autoritatea din România pentru protecția datelor este ANSPDCP (dataprotection.ro).</div>`,
+q:[
+["Ce e imaginea unei persoane, conform GDPR?",["Nimic special","O dată personală","Proprietatea bisericii","Doar o amintire"],1,"De aceea are nevoie de reguli."],
+["La un concert mare se fac poze. Ce trebuie să existe la intrare?",["Nimic","Un anunț care spune că se fac fotografii și unde vor fi folosite","Un fotograf profesionist","Un formular pentru fiecare spectator"],1,"Oamenii trebuie informați."],
+["Vrei să postezi o poză de aproape cu un tânăr de 14 ani. Ce îți trebuie?",["Acordul lui verbal","Acordul scris al părinților","Nimic, dacă iese bine","Acordul dirijorului"],1,"Sub 16 ani decid părinții."],
+["Ce NU faci când postezi poze de la evenimentul pentru tineri?",["Folosești contul oficial","Scrii numele complet al tinerilor lângă poze","Alegi poze de grup","Verifici acordurile"],1,"Numele lângă poză îi face ușor de găsit de oricine."],
+["Cineva îți cere să ștergi o poză în care apare. Ce faci?",["Refuzi, ai făcut-o legal","O ștergi și anunți coordonatorul","O muți în alt album","Îi spui să vorbească cu preotul"],1,"Respectăm dorința omului."]
+]},
+{t:"Accesibilitate", d:"Persoane în vârstă și persoane cu dizabilități", html:`
+<p>La concertele din biserică vin mulți oameni în vârstă. Bisericile vechi au trepte, lumină slabă și ecou.</p>
+<h3>Regula de bază</h3>
+<p><b>Întrebi înainte să ajuți:</b> „Vă pot ajuta cu ceva?” Nu apuci pe nimeni de braț și nu împingi un scaun cu rotile fără să întrebi.</p>
+<h3>Locuri și drumuri</h3>
+<ul>
+<li>Păstrezi câteva locuri accesibile: pe margine, aproape de ieșire și de toaletă, cu spațiu pentru un scaun cu rotile.</li>
+<li>Drumurile până la ele rămân libere, fără obiecte sau cabluri pe jos.</li>
+</ul>
+<h3>Auz</h3>
+<ul>
+<li>Cine vorbește în public folosește microfonul.</li>
+<li>Când vorbești cu o persoană care aude greu, stai cu fața la ea și vorbește clar, ca să-ți poată citi buzele.</li>
+</ul>
+<h3>Văz</h3>
+<ul>
+<li>Oferi programe tipărite cu litere mari, dacă există.</li>
+<li>Când conduci o persoană nevăzătoare, îi oferi brațul tău și îi spui ce urmează: „Urmează trei trepte în jos.”</li>
+</ul>
+<h3>Dizabilități care nu se văd</h3>
+<p>Autism, demență, dureri cronice. Oferi un loc mai liniștit sau o pauză și nu ceri dovezi.</p>`,
+q:[
+["Vezi un domn în scaun cu rotile la intrare. Ce faci?",["Îl împingi direct înăuntru","Îl întrebi: „Vă pot ajuta cu ceva?”","Îl lași să se descurce","Îl trimiți la altă intrare fără explicații"],1,"Întâi întrebi, apoi ajuți cum vrea el."],
+["Ce locuri păstrezi pentru persoanele cu nevoi speciale?",["Locurile din mijlocul rândului","Locuri pe margine, aproape de ieșire, cu spațiu pentru scaun cu rotile","Locurile de la balcon","Niciunul"],1,"Ușor de ajuns și ușor de ieșit."],
+["Cum vorbești cu o persoană care aude greu?",["Strigi cât poți","Stai cu fața la ea și vorbești clar","Îi scrii pe telefon din spate","O eviți"],1,"Așa îți poate citi și buzele."],
+["Conduci o doamnă nevăzătoare spre loc. Ce faci?",["O tragi de mână","Îi oferi brațul și îi spui ce urmează, de exemplu trepte","O împingi ușor din spate","O lași să meargă singură"],1,"Ea te ține de braț, iar tu îi descrii drumul."],
+["Un tânăr cu autism e copleșit de zgomot. Ce faci?",["Îi ceri un certificat medical","Îi oferi un loc mai liniștit sau o pauză","Îi spui să se obișnuiască","Îl trimiți acasă"],1,"Ajuți fără să ceri dovezi."]
 ]}
 ];
 

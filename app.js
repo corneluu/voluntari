@@ -6,6 +6,8 @@ const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } c
 const app = document.getElementById("app");
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const here = () => location.origin + location.pathname;
+// answer order is shuffled on every attempt so the right answer isn't always in the same spot
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 // ─── SUPABASE (login + rezultate) ───
 const sb = C.SUPABASE_URL && C.SUPABASE_ANON_KEY && window.supabase ? window.supabase.createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY) : null;
@@ -122,7 +124,7 @@ function lesson(i){
   <form class="quiz" id="quiz">
     <div class="eyebrow">Test</div><h2>Verifică ce ai învățat</h2>
     ${m.q.map((q,k)=>`<div class="q" id="q${k}"><p>${k+1}. ${q[0]}</p>
-      ${q[1].map((o,j)=>`<label><input type="radio" name="m${i}q${k}" id="m${i}q${k}o${j}" value="${j}" required> <span>${o}</span></label>`).join("")}
+      ${shuffle(q[1].map((o,j)=>j)).map(j=>`<label><input type="radio" name="m${i}q${k}" id="m${i}q${k}o${j}" value="${j}" required> <span>${q[1][j]}</span></label>`).join("")}
       <div class="why" hidden></div></div>`).join("")}
     <div class="row"><button class="btn" type="submit">Verifică răspunsurile</button></div>
     <div class="result" id="res" aria-live="polite"></div>
