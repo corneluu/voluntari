@@ -1,0 +1,2754 @@
+{
+ "url": "index.html",
+ "at": "2026-10-29T14:51:48.987Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    0.59,
+    0.47,
+    0.64,
+    0.94,
+    0.94,
+    0.94,
+    0.59,
+    0.69,
+    0.61,
+    0.53
+   ],
+   "motion": {
+    "elements": 37,
+    "css": 0,
+    "transitions": 37,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 8139,
+     "screens": 9,
+     "words": 637,
+     "img": 7,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "dom-vedere-interioara.jpg",
+      "april-2023-piata-unirii-din-timisoara-img.jpg",
+      "the-arcadian-singers-of-oxford-40th-anniversary.",
+      "landesarchiv-baden-wuerttemberg-staatsarchiv-fre",
+      "dulmen-st-viktor-kirche-innenansicht-2020-6115.j",
+      "domul-romano-catolic-din-timisoara-2023-img.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Școala Voluntarilor",
+     "words": 2,
+     "chars": 19,
+     "lines": 1,
+     "size": 122.6,
+     "vw": 8.5,
+     "font": "Gambarino",
+     "weight": 400,
+     "tracking": -0.02,
+     "leading": 0.92,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.97,
+     "top": 118,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Școala Voluntarilor",
+     "words": 2,
+     "lines": 1,
+     "size": 122.6,
+     "font": "Gambarino"
+    },
+    "headings": [
+     {
+      "text": "Școala Voluntarilor",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 122.6,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.97,
+      "top": 118,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Pregătit pentru orice seară",
+      "words": 4,
+      "chars": 27,
+      "lines": 2,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 1066,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "14 lecții",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.13,
+      "top": 1307,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "15 minute",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.17,
+      "top": 1307,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "4 din 5",
+      "words": 3,
+      "chars": 7,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.12,
+      "top": 1307,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "1 certificat",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.18,
+      "top": 1307,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "Ecusonul tău",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.39,
+      "top": 1685,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Numele tău",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 1774,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.03,
+      "top": 1877,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "Lecțiile, pe capitole",
+      "words": 3,
+      "chars": 21,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 2499,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Bun venit în echipă",
+      "words": 4,
+      "chars": 19,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 2736,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Concertele corului",
+      "words": 2,
+      "chars": 18,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 3536,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Evenimentele pentru tineri",
+      "words": 3,
+      "chars": 26,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 4336,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Urgențe și prim ajutor",
+      "words": 4,
+      "chars": 22,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.44,
+      "top": 5136,
+      "tag": "h3",
+      "kind": "heading"
+     },
+     {
+      "text": "Cum funcționează",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 64,
+      "vw": 4.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.36,
+      "top": 5972,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ce vei ști să faci",
+      "words": 5,
+      "chars": 18,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.45,
+      "top": 6839,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Mulțumim că slujești",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.32,
+      "top": 7603,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 17,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 3,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "General Sans",
+       "share": 0.91,
+       "mono": false
+      },
+      {
+       "family": "Gambarino",
+       "share": 0.09,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      19,
+      26,
+      40,
+      64,
+      123
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "General Sans",
+      "size": 19,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 13.9
+     },
+     "measureChars": 84,
+     "max": {
+      "size": 122.6,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "text": "Școala Voluntarilor"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.31,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#2b2216",
+     "bodyBgHsl": {
+      "h": 34,
+      "s": 0.32,
+      "l": 0.13
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#2b2216",
+       "top": 0,
+       "hsl": {
+        "h": 34,
+        "s": 0.32,
+        "l": 0.13
+       }
+      },
+      {
+       "color": "#e4e2da",
+       "top": 499,
+       "hsl": {
+        "h": 48,
+        "s": 0.16,
+        "l": 0.87
+       }
+      },
+      {
+       "color": "#bda38b",
+       "top": 563,
+       "hsl": {
+        "h": 29,
+        "s": 0.27,
+        "l": 0.64
+       }
+      },
+      {
+       "color": "#4a3c28",
+       "top": 1545,
+       "hsl": {
+        "h": 35,
+        "s": 0.3,
+        "l": 0.22
+       }
+      },
+      {
+       "color": "#9c8869",
+       "top": 4232,
+       "hsl": {
+        "h": 36,
+        "s": 0.2,
+        "l": 0.51
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#1c150d",
+       "share": 0.42
+      },
+      {
+       "color": "#e4e2da",
+       "share": 0.36
+      },
+      {
+       "color": "#a39a8b",
+       "share": 0.19
+      },
+      {
+       "color": "#5a4e40",
+       "share": 0.04
+      }
+     ],
+     "button": {
+      "bg": "#1c150d",
+      "hsl": {
+       "h": 32,
+       "s": 0.37,
+       "l": 0.08
+      },
+      "fg": "#e4e2da"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": 0,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Începe cu prima lecție"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.8
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "gambarino",
+     "general sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 8139,
+    "margins": {
+     "left": 80,
+     "right": 80
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 0,
+      "height": 900,
+      "words": 53,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Școala Voluntarilor",
+       "size": 123,
+       "tag": "h1"
+      },
+      "left": 126,
+      "right": 252,
+      "textLeft": 126,
+      "textRight": 252,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 900,
+      "height": 645,
+      "words": 65,
+      "media": 0,
+      "middle": 137,
+      "heading": {
+       "text": "Pregătit pentru orice seară",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 80,
+      "right": 80,
+      "textLeft": 80,
+      "textRight": 80,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#ecuson.sec.wrap",
+      "tag": "section",
+      "top": 1545,
+      "height": 814,
+      "words": 78,
+      "media": 0,
+      "middle": 256,
+      "heading": {
+       "text": "Ecusonul tău",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 80,
+      "right": 244,
+      "textLeft": 80,
+      "textRight": 244,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cap.wrap.chapters-head",
+      "tag": "div",
+      "top": 2359,
+      "height": 273,
+      "words": 25,
+      "media": 0,
+      "middle": 277,
+      "heading": {
+       "text": "Lecțiile, pe capitole",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 80,
+      "right": 124,
+      "textLeft": 80,
+      "textRight": 124,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-echipa.chap.wrap",
+      "tag": "article",
+      "top": 2632,
+      "height": 800,
+      "words": 37,
+      "media": 1,
+      "middle": 133,
+      "heading": {
+       "text": "Bun venit în echipă",
+       "size": 40,
+       "tag": "h3"
+      },
+      "left": 80,
+      "right": 80,
+      "textLeft": 80,
+      "textRight": 80,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-concertul.chap.wrap",
+      "tag": "article",
+      "top": 3432,
+      "height": 800,
+      "words": 31,
+      "media": 1,
+      "middle": 133,
+      "heading": {
+       "text": "Concertele corului",
+       "size": 40,
+       "tag": "h3"
+      },
+      "left": 80,
+      "right": 80,
+      "textLeft": 80,
+      "textRight": 80,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-tinerii.chap.wrap",
+      "tag": "article",
+      "top": 4232,
+      "height": 800,
+      "words": 36,
+      "media": 1,
+      "middle": 133,
+      "heading": {
+       "text": "Evenimentele pentru tineri",
+       "size": 40,
+       "tag": "h3"
+      },
+      "left": 80,
+      "right": 80,
+      "textLeft": 80,
+      "textRight": 80,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-greu.chap.wrap",
+      "tag": "article",
+      "top": 5032,
+      "height": 800,
+      "words": 39,
+      "media": 1,
+      "middle": 133,
+      "heading": {
+       "text": "Urgențe și prim ajutor",
+       "size": 40,
+       "tag": "h3"
+      },
+      "left": 80,
+      "right": 80,
+      "textLeft": 80,
+      "textRight": 80,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 5832,
+      "height": 811,
+      "words": 60,
+      "media": 0,
+      "middle": 221,
+      "heading": {
+       "text": "Cum funcționează",
+       "size": 64,
+       "tag": "h2"
+      },
+      "left": 80,
+      "right": 262,
+      "textLeft": 80,
+      "textRight": 262,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 6643,
+      "height": 751,
+      "words": 61,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Ce vei ști să faci",
+       "size": 40,
+       "tag": "h2"
+      },
+      "left": 396,
+      "right": 396,
+      "textLeft": 409,
+      "textRight": 409,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.foot.wrap",
+      "tag": "footer",
+      "top": 7394,
+      "height": 745,
+      "words": 142,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Mulțumim că slujești",
+       "size": 40,
+       "tag": "h2"
+      },
+      "left": 180,
+      "right": 180,
+      "textLeft": 236,
+      "textRight": 435,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 6444,
+      "height": 384
+     }
+    ],
+    "h1s": [
+     {
+      "text": "Școala Voluntarilor",
+      "size": 123,
+      "top": 118,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 80,
+      "n": 11
+     },
+     {
+      "x": 104,
+      "n": 4
+     },
+     {
+      "x": 766,
+      "n": 3
+     },
+     {
+      "x": 405,
+      "n": 1
+     },
+     {
+      "x": 841,
+      "n": 1
+     },
+     {
+      "x": 1058,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 21,
+    "bodySize": 19,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.07,
+    "voidBox": {
+     "x": 0,
+     "y": 840,
+     "w": 1440,
+     "h": 60
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 10,
+   "filled": [
+    0.61,
+    0.6,
+    0.74,
+    0.85,
+    0.84,
+    0.82,
+    0.87,
+    0.77,
+    0.8,
+    0.78
+   ],
+   "motion": {
+    "elements": 36,
+    "css": 0,
+    "transitions": 36,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 9651,
+     "screens": 9.4,
+     "words": 690,
+     "img": 7,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "dom-vedere-interioara.jpg",
+      "april-2023-piata-unirii-din-timisoara-img.jpg",
+      "the-arcadian-singers-of-oxford-40th-anniversary.",
+      "landesarchiv-baden-wuerttemberg-staatsarchiv-fre",
+      "dulmen-st-viktor-kirche-innenansicht-2020-6115.j",
+      "domul-romano-catolic-din-timisoara-2023-img.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Școala Voluntarilor",
+     "words": 2,
+     "chars": 19,
+     "lines": 1,
+     "size": 80,
+     "vw": 10.4,
+     "font": "Gambarino",
+     "weight": 400,
+     "tracking": -0.02,
+     "leading": 0.92,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.95,
+     "top": 96,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Școala Voluntarilor",
+     "words": 2,
+     "lines": 1,
+     "size": 80,
+     "font": "Gambarino"
+    },
+    "headings": [
+     {
+      "text": "Școala Voluntarilor",
+      "words": 2,
+      "chars": 19,
+      "lines": 1,
+      "size": 80,
+      "vw": 10.4,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 96,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Pregătit pentru orice seară",
+      "words": 4,
+      "chars": 27,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 1120,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "14 lecții",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 1303,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "15 minute",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.45,
+      "top": 1303,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "4 din 5",
+      "words": 3,
+      "chars": 7,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.45,
+      "top": 1432,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "1 certificat",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.45,
+      "top": 1432,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "Ecusonul tău",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.73,
+      "top": 1712,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Numele tău",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 31.6,
+      "vw": 4.1,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.39,
+      "top": 2347,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 31.6,
+      "vw": 4.1,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.05,
+      "top": 2447,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "Lecțiile, pe capitole",
+      "words": 3,
+      "chars": 21,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 3015,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Cum funcționează",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 45.4,
+      "vw": 5.9,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.95,
+      "top": 7179,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ce vei ști să faci",
+      "words": 5,
+      "chars": 18,
+      "lines": 1,
+      "size": 31.6,
+      "vw": 4.1,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.8,
+      "top": 8116,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Mulțumim că slujești",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 31.6,
+      "vw": 4.1,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.89,
+      "top": 8937,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "General Sans",
+       "share": 0.94,
+       "mono": false
+      },
+      {
+       "family": "Gambarino",
+       "share": 0.06,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      18,
+      23,
+      32,
+      45,
+      80
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "General Sans",
+      "size": 18,
+      "leading": 1.35,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 12.1
+     },
+     "measureChars": 84,
+     "max": {
+      "size": 80,
+      "vw": 10.4,
+      "font": "Gambarino",
+      "text": "Școala Voluntarilor"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.29,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#2b2216",
+     "bodyBgHsl": {
+      "h": 34,
+      "s": 0.32,
+      "l": 0.13
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#2b2216",
+       "top": 0,
+       "hsl": {
+        "h": 34,
+        "s": 0.32,
+        "l": 0.13
+       }
+      },
+      {
+       "color": "#e4e2da",
+       "top": 564,
+       "hsl": {
+        "h": 48,
+        "s": 0.16,
+        "l": 0.87
+       }
+      },
+      {
+       "color": "#bda38b",
+       "top": 616,
+       "hsl": {
+        "h": 29,
+        "s": 0.27,
+        "l": 0.64
+       }
+      },
+      {
+       "color": "#9c8869",
+       "top": 668,
+       "hsl": {
+        "h": 36,
+        "s": 0.2,
+        "l": 0.51
+       }
+      },
+      {
+       "color": "#4a3c28",
+       "top": 720,
+       "hsl": {
+        "h": 35,
+        "s": 0.3,
+        "l": 0.22
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#1c150d",
+       "share": 0.46
+      },
+      {
+       "color": "#e4e2da",
+       "share": 0.34
+      },
+      {
+       "color": "#a39a8b",
+       "share": 0.17
+      },
+      {
+       "color": "#5a4e40",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#1c150d",
+      "hsl": {
+       "h": 32,
+       "s": 0.37,
+       "l": 0.08
+      },
+      "fg": "#e4e2da"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": 0,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Începe cu prima lecție"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.8
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "gambarino",
+     "general sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 9651,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 0,
+      "height": 1024,
+      "words": 53,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Școala Voluntarilor",
+       "size": 80,
+       "tag": "h1"
+      },
+      "left": 38,
+      "right": 79,
+      "textLeft": 38,
+      "textRight": 79,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 1024,
+      "height": 592,
+      "words": 65,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Pregătit pentru orice seară",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 30,
+      "textLeft": 20,
+      "textRight": 30,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#ecuson.sec.wrap",
+      "tag": "section",
+      "top": 1616,
+      "height": 1259,
+      "words": 78,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Ecusonul tău",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 188,
+      "textLeft": 20,
+      "textRight": 214,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cap.wrap.chapters-head",
+      "tag": "div",
+      "top": 2875,
+      "height": 339,
+      "words": 22,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 20,
+      "right": 207,
+      "textLeft": 20,
+      "textRight": 207,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-echipa.chap.wrap",
+      "tag": "article",
+      "top": 3214,
+      "height": 920,
+      "words": 43,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Echipa",
+       "size": 23,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-concertul.chap.wrap",
+      "tag": "article",
+      "top": 4134,
+      "height": 920,
+      "words": 43,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Concertul",
+       "size": 23,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-tinerii.chap.wrap",
+      "tag": "article",
+      "top": 5053,
+      "height": 1110,
+      "words": 62,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Tinerii",
+       "size": 23,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-greu.chap.wrap",
+      "tag": "article",
+      "top": 6164,
+      "height": 920,
+      "words": 52,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Când e greu",
+       "size": 23,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 7083,
+      "height": 909,
+      "words": 60,
+      "media": 0,
+      "middle": 283,
+      "heading": {
+       "text": "Cum funcționează",
+       "size": 45,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 54,
+      "textLeft": 20,
+      "textRight": 54,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 7992,
+      "height": 744,
+      "words": 61,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Ce vei ști să faci",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 77,
+      "right": 77,
+      "textLeft": 77,
+      "textRight": 77,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.foot.wrap",
+      "tag": "footer",
+      "top": 8736,
+      "height": 914,
+      "words": 142,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Mulțumim că slujești",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 42,
+      "textRight": 111,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 2748,
+      "height": 340
+     }
+    ],
+    "h1s": [
+     {
+      "text": "Școala Voluntarilor",
+      "size": 80,
+      "top": 96,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 8
+     },
+     {
+      "x": 34,
+      "n": 5
+     },
+     {
+      "x": 54,
+      "n": 3
+     }
+    ],
+    "leftBlocks": 16,
+    "bodySize": 18,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 11,
+   "filled": [
+    0.66,
+    0.66,
+    0.84,
+    0.71,
+    0.94,
+    0.96,
+    0.89,
+    0.72,
+    0.91,
+    0.72,
+    0.78
+   ],
+   "motion": {
+    "elements": 37,
+    "css": 0,
+    "transitions": 37,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 8609,
+     "screens": 10.2,
+     "words": 690,
+     "img": 7,
+     "video": 0,
+     "canvas": 0,
+     "svg": 2,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 6,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "dom-vedere-interioara.jpg",
+      "april-2023-piata-unirii-din-timisoara-img.jpg",
+      "the-arcadian-singers-of-oxford-40th-anniversary.",
+      "landesarchiv-baden-wuerttemberg-staatsarchiv-fre",
+      "dulmen-st-viktor-kirche-innenansicht-2020-6115.j",
+      "domul-romano-catolic-din-timisoara-2023-img.jpg"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Școala Voluntarilor",
+     "words": 2,
+     "chars": 19,
+     "lines": 2,
+     "size": 58.5,
+     "vw": 15,
+     "font": "Gambarino",
+     "weight": 400,
+     "tracking": -0.02,
+     "leading": 0.92,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.9,
+     "top": 96,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Școala Voluntarilor",
+     "words": 2,
+     "lines": 2,
+     "size": 58.5,
+     "font": "Gambarino"
+    },
+    "headings": [
+     {
+      "text": "Școala Voluntarilor",
+      "words": 2,
+      "chars": 19,
+      "lines": 2,
+      "size": 58.5,
+      "vw": 15,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.92,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 96,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Pregătit pentru orice seară",
+      "words": 4,
+      "chars": 27,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 940,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "14 lecții",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.4,
+      "top": 1161,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "15 minute",
+      "words": 2,
+      "chars": 9,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.4,
+      "top": 1161,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "4 din 5",
+      "words": 3,
+      "chars": 7,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.4,
+      "top": 1277,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "1 certificat",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.4,
+      "top": 1277,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "Ecusonul tău",
+      "words": 2,
+      "chars": 12,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 1544,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Numele tău",
+      "words": 2,
+      "chars": 10,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.74,
+      "top": 2243,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": 0,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.09,
+      "top": 2341,
+      "tag": "b",
+      "kind": "heading"
+     },
+     {
+      "text": "Lecțiile, pe capitole",
+      "words": 3,
+      "chars": 21,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 2897,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Cum funcționează",
+      "words": 2,
+      "chars": 16,
+      "lines": 1,
+      "size": 33.3,
+      "vw": 8.5,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 6163,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Ce vei ști să faci",
+      "words": 5,
+      "chars": 18,
+      "lines": 1,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.68,
+      "top": 7072,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Mulțumim că slujești",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 28,
+      "vw": 7.2,
+      "font": "Gambarino",
+      "weight": 400,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 7831,
+      "tag": "h2",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 13,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 2,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "General Sans",
+       "share": 0.94,
+       "mono": false
+      },
+      {
+       "family": "Gambarino",
+       "share": 0.06,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      17,
+      18,
+      20,
+      28,
+      33,
+      59
+     ],
+     "sizeCount": 7,
+     "notLoaded": [],
+     "body": {
+      "font": "General Sans",
+      "size": 17,
+      "leading": 1.55,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 13.9
+     },
+     "measureChars": 54,
+     "max": {
+      "size": 58.5,
+      "vw": 15,
+      "font": "Gambarino",
+      "text": "Școala Voluntarilor"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.29,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#2b2216",
+     "bodyBgHsl": {
+      "h": 34,
+      "s": 0.32,
+      "l": 0.13
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#2b2216",
+       "top": 0,
+       "hsl": {
+        "h": 34,
+        "s": 0.32,
+        "l": 0.13
+       }
+      },
+      {
+       "color": "#e4e2da",
+       "top": 471,
+       "hsl": {
+        "h": 48,
+        "s": 0.16,
+        "l": 0.87
+       }
+      },
+      {
+       "color": "#bda38b",
+       "top": 523,
+       "hsl": {
+        "h": 29,
+        "s": 0.27,
+        "l": 0.64
+       }
+      },
+      {
+       "color": "#9c8869",
+       "top": 575,
+       "hsl": {
+        "h": 36,
+        "s": 0.2,
+        "l": 0.51
+       }
+      },
+      {
+       "color": "#4a3c28",
+       "top": 1448,
+       "hsl": {
+        "h": 35,
+        "s": 0.3,
+        "l": 0.22
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#1c150d",
+       "share": 0.46
+      },
+      {
+       "color": "#e4e2da",
+       "share": 0.34
+      },
+      {
+       "color": "#a39a8b",
+       "share": 0.17
+      },
+      {
+       "color": "#5a4e40",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#1c150d",
+      "hsl": {
+       "h": 32,
+       "s": 0.37,
+       "l": 0.08
+      },
+      "fg": "#e4e2da"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": 0,
+     "height": 48,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Începe cu prima lecție"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 6,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.8
+     }
+    ],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 60,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "gambarino",
+     "general sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 8609,
+    "margins": {
+     "left": 20,
+     "right": 20
+    },
+    "sections": [
+     {
+      "sel": "section.hero",
+      "tag": "section",
+      "top": 0,
+      "height": 844,
+      "words": 53,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Școala Voluntarilor",
+       "size": 59,
+       "tag": "h1"
+      },
+      "left": 25,
+      "right": 25,
+      "textLeft": 25,
+      "textRight": 25,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 844,
+      "height": 604,
+      "words": 65,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Pregătit pentru orice seară",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 21,
+      "textLeft": 20,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#ecuson.sec.wrap",
+      "tag": "section",
+      "top": 1448,
+      "height": 1309,
+      "words": 78,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Ecusonul tău",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 36,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "div#cap.wrap.chapters-head",
+      "tag": "div",
+      "top": 2757,
+      "height": 351,
+      "words": 25,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Lecțiile, pe capitole",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 22,
+      "textLeft": 20,
+      "textRight": 22,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-echipa.chap.wrap",
+      "tag": "article",
+      "top": 3108,
+      "height": 672,
+      "words": 43,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Echipa",
+       "size": 20,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-concertul.chap.wrap",
+      "tag": "article",
+      "top": 3779,
+      "height": 672,
+      "words": 43,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Concertul",
+       "size": 20,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-tinerii.chap.wrap",
+      "tag": "article",
+      "top": 4451,
+      "height": 899,
+      "words": 62,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Tinerii",
+       "size": 20,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "article#cap-greu.chap.wrap",
+      "tag": "article",
+      "top": 5350,
+      "height": 716,
+      "words": 52,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Când e greu",
+       "size": 20,
+       "tag": "h3"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 6067,
+      "height": 881,
+      "words": 60,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Cum funcționează",
+       "size": 33,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 54,
+      "textLeft": 20,
+      "textRight": 54,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.sec.wrap",
+      "tag": "section",
+      "top": 6948,
+      "height": 682,
+      "words": 61,
+      "media": 1,
+      "middle": 0,
+      "heading": {
+       "text": "Ce vei ști să faci",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 62,
+      "right": 62,
+      "textLeft": 63,
+      "textRight": 63,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer.foot.wrap",
+      "tag": "footer",
+      "top": 7630,
+      "height": 979,
+      "words": 142,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Mulțumim că slujești",
+       "size": 28,
+       "tag": "h2"
+      },
+      "left": 20,
+      "right": 20,
+      "textLeft": 20,
+      "textRight": 20,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [
+     {
+      "top": 2628,
+      "height": 260
+     },
+     {
+      "top": 6780,
+      "height": 284
+     }
+    ],
+    "h1s": [
+     {
+      "text": "Școala Voluntarilor",
+      "size": 59,
+      "top": 96,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 20,
+      "n": 9
+     },
+     {
+      "x": 34,
+      "n": 5
+     },
+     {
+      "x": 54,
+      "n": 3
+     }
+    ],
+    "leftBlocks": 17,
+    "bodySize": 13,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "blank-gap",
+   "width": 1440,
+   "message": "A 384px stretch at 6444px holds nothing.",
+   "fix": "Check that it is a deliberate rest (once per page at most); otherwise close it to the normal section gap."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\desktop-fold.jpg",
+   "pages": [
+    "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\desktop-page-01.jpg",
+    "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\desktop-page-02.jpg",
+    "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\tablet-fold.jpg",
+   "pages": [
+    "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\tablet-page-01.jpg",
+    "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\mobile-fold.jpg",
+   "pages": [
+    "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\mobile-page-01.jpg",
+    "D:\\corneluu\\Curs Voluntari\\voluntari\\.taste-skill\\inspect\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}
