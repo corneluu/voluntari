@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "organic-clip-path",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-29T14:58:38.805Z",
+        "reason": "Claude: the receipt slip's zigzag bottom edge is a regular geometric cut that the dealt taste-skill direction (page-is-the-object) calls for; not an organic contour"
+      }
+    ]
+  }
+}

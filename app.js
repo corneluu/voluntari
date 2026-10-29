@@ -69,24 +69,73 @@ async function onSession(s){
 if (sb) sb.auth.onAuthStateChange((ev, s) => { if (["INITIAL_SESSION","SIGNED_IN","SIGNED_OUT"].includes(ev)) setTimeout(() => onSession(s)); });
 
 // ─── BARA DE SUS ───
+// ─── NAVIGARE: bara de sus, bara de jos (telefon), meniul ───
+// small drawn icons, one stroke weight
+const ICON = {
+  menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
+  close: '<path d="M6 6l12 12M18 6L6 18"/>',
+  arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  back: '<path d="M19 12H5M11 6l-6 6 6 6"/>',
+  up: '<path d="M12 19V5M6 11l6-6 6 6"/>',
+  check: '<path d="M5 12.5l4.5 4.5L19 7"/>',
+  mail: '<path d="M3 6h18v12H3zM3 7l9 7 9-7"/>',
+  user: '<path d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
+  book: '<path d="M4 5h6a2 2 0 012 2v12a2 2 0 00-2-2H4zM20 5h-6a2 2 0 00-2 2v12a2 2 0 012-2h6z"/>',
+};
+const ic = n => `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
+const goTarget = () => { const nx = nextModule(); return nx === null ? {href: "#certificat", label: "Certificatul", t: ""} : {href: "#lectia-" + (nx + 1), label: coursePct() > 0 ? "Continuă" : "Începe", t: M[nx].t}; };
+
 function barHTML(){
   return `<header class="bar wrap" id="bar">
-    <a class="left link" href="#cap-echipa" style="text-decoration:none">Lecțiile</a>
-    <a class="mark" href="#">Școala Voluntarilor</a>
+    <button class="menu-btn" type="button" data-menu aria-haspopup="dialog" aria-controls="menu" aria-label="Deschide meniul">${ic("menu")}<span>Meniu</span></button>
+    <a class="mark" href="#" data-top>Școala Voluntarilor</a>
     <div class="right" id="barRight"></div>
-  </header>`;
+  </header>
+  <nav class="dock" aria-label="Navigare rapidă">
+    <button class="btn quiet" type="button" data-menu aria-controls="menu">${ic("book")}<span>Lecțiile</span></button>
+    <a class="btn" id="dockGo" href="#"><span>Continuă</span>${ic("arrow")}</a>
+  </nav>
+  <dialog class="menu" id="menu" aria-label="Meniu"></dialog>`;
 }
 function paintBar(){
-  const el = document.getElementById("barRight");
-  if (!el) return;
-  el.innerHTML = `${leader ? `<a href="#rezultate">Rezultatele echipei</a>` : ""}<a href="#ecuson">${session ? "Ecusonul meu" : "Conectare"}</a>`;
+  const el = document.getElementById("barRight"), g = goTarget();
+  if (el) el.innerHTML = `${leader ? `<a class="barlink" href="#rezultate">Rezultatele echipei</a>` : ""}<a class="barlink" href="#ecuson">${ic("user")}<span>${session ? "Ecusonul meu" : "Conectare"}</span></a><a class="btn small-btn" href="${g.href}"><span>${g.label}</span>${ic("arrow")}</a>`;
+  const d = document.getElementById("dockGo");
+  if (d) { d.href = g.href; d.querySelector("span").textContent = g.label; }
 }
+function menuHTML(){
+  const g = goTarget(), L = (h, t, s) => `<li><a class="mlink" href="${h}"${h === "#" ? " data-top" : ""}><span>${t}</span>${s ? `<small>${s}</small>` : ""}</a></li>`;
+  return `<div class="menu-in">
+    <div class="menu-top"><span class="mark">Școala Voluntarilor</span><button class="close" type="button" data-close>${ic("close")}<span>Închide</span></button></div>
+    <a class="btn wide" href="${g.href}"><span>${g.label}${g.t ? ": " + g.t : ""}</span>${ic("arrow")}</a>
+    <h2 class="menu-h">Pagina</h2>
+    <ul class="mlinks">
+      ${L("#", "Acasă", "")}${L("#ecuson", session ? "Ecusonul meu" : "Ecusonul tău și conectarea", coursePct() + "% din curs")}${L("#cum", "Cum funcționează", "")}${L("#ce", "Ce vei ști să faci", "")}${L("#certificat", "Certificatul", passed() + " din " + M.length + " teste")}${leader ? L("#rezultate", "Rezultatele echipei", "doar coordonator") : ""}${L("#contact", "Contact", "")}
+    </ul>
+    ${CH.map(c => `<h2 class="menu-h"><a href="#cap-${c.id}">${c.t}</a><span>${chPct(c)}%</span></h2>
+      <ul class="mlessons">${c.mods.map(i => `<li><a class="mles${state.done[i] ? " done" : ""}" href="#lectia-${i + 1}"><span>${M[i].t}</span><span class="pc">${state.done[i] ? ic("check") : ""}${pct(i)}%</span></a></li>`).join("")}</ul>`).join("")}
+  </div>`;
+}
+function openMenu(){
+  const d = document.getElementById("menu");
+  if (!d) return;
+  d.innerHTML = menuHTML();
+  if (d.showModal) d.showModal(); else d.setAttribute("open", "");
+  d.querySelector("[data-close]").focus();
+}
+const closeMenu = () => { const d = document.getElementById("menu"); if (d && d.open) { if (d.close) d.close(); else d.removeAttribute("open"); } };
+document.addEventListener("click", e => {
+  if (e.target.closest("[data-menu]")) { e.preventDefault(); openMenu(); return; }
+  if (e.target.closest("[data-close]") || e.target.id === "menu") { closeMenu(); return; }
+  if (e.target.closest("[data-top]")) { if (!location.hash || location.hash === "#") { e.preventDefault(); scrollTo({top: 0, behavior: reduced ? "auto" : "smooth"}); } closeMenu(); return; }
+  if (e.target.closest("#menu a")) closeMenu();
+});
 
 // ─── ACASĂ ───
 function home(){
   view = "home";
   const nx = nextModule(), started = coursePct() > 0;
-  const cta = nx === null ? `<a class="btn dark" href="#certificat">Vezi certificatul</a>` : `<a class="btn dark" href="#lectia-${nx + 1}">${started ? "Continuă: " + M[nx].t : "Începe cu prima lecție"}</a>`;
+  const cta = nx === null ? `<a class="btn dark" href="#certificat">Vezi certificatul</a>` : `<a class="btn dark" href="#lectia-${nx + 1}"><span>${started ? "Continuă: " + M[nx].t : "Începe cu prima lecție"}</span>${ic("arrow")}</a>`;
   app.innerHTML = barHTML() + `
   <main>
   <section class="hero" aria-labelledby="h1">
@@ -139,7 +188,7 @@ function home(){
     ${CH.map((c, k) => chapterHTML(c, k)).join("")}
   </section>
 
-  <section class="sec wrap how" aria-labelledby="h-how">
+  <section class="sec wrap how" id="cum" aria-labelledby="h-how">
     <div class="inner grid">
       <div class="copy">
         <h2 id="h-how" class="rv">Cum funcționează</h2>
@@ -160,7 +209,7 @@ function home(){
     </div>
   </section>
 
-  <section class="sec wrap topics" aria-labelledby="h-topics">
+  <section class="sec wrap topics" id="ce" aria-labelledby="h-topics">
     <div class="tcard rv">
       <h2 id="h-topics">Ce vei ști să faci</h2>
       <img src="assets/domul-romano-catolic-din-timisoara-2023-img.jpg" width="1920" height="1536" alt="Fațada Domului romano-catolic din Timișoara" loading="lazy">
@@ -259,20 +308,20 @@ function paintLogin(){
 }
 
 function footHTML(){
-  return `<footer class="foot wrap" aria-labelledby="h-foot">
+  const F = (tag, attrs, icon, t, s) => `<${tag} class="fbtn" ${attrs}>${ic(icon)}<span><b>${t}</b><small>${s}</small></span>${ic("arrow")}</${tag}>`;
+  return `<footer class="foot wrap" id="contact" aria-labelledby="h-foot">
     <svg class="scallop" viewBox="0 0 1200 50" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50${" a50 50 0 0 1 100 0".repeat(12)}Z"/></svg>
     <div class="back">
       <div class="stamp"><img src="assets/timisoara-biserica-millennium.jpg" alt="Biserica Millennium din Fabric, Timișoara" loading="lazy" width="600" height="800"></div>
-      <div class="halves">
-        <div><h2 id="h-foot">Mulțumim că slujești</h2>
-          <div class="msgtxt"><p>Fiecare concert și fiecare întâlnire cu tinerii se sprijină pe oameni care vin mai devreme și pleacă ultimii.</p><p>Ai o întrebare sau o idee pentru o lecție nouă? Scrie-ne.</p></div></div>
-        <address>
-          <a href="mailto:cornelmrn18@gmail.com">cornelmrn18@gmail.com</a>
-          <a href="privacy/">Politica de confidențialitate</a>
-          <a href="tos/">Termeni și condiții</a>
-          <span>Timișoara, România</span>
-        </address>
+      <h2 id="h-foot">Mulțumim că slujești</h2>
+      <p class="msgtxt">Fiecare concert și fiecare întâlnire cu tinerii se sprijină pe oameni care vin mai devreme și pleacă ultimii. Ai o întrebare sau o idee pentru o lecție nouă? Scrie-ne.</p>
+      <div class="factions">
+        ${F("a", 'href="mailto:cornelmrn18@gmail.com"', "mail", "Scrie-ne", "cornelmrn18@gmail.com")}
+        ${F("button", 'type="button" data-menu', "book", "Toate lecțiile", M.length + " lecții în " + CH.length + " capitole")}
+        ${F("a", 'href="#ecuson"', "user", "Ecusonul tău", "progresul și conectarea")}
+        ${F("a", 'href="#" data-top', "up", "Înapoi sus", "la începutul paginii")}
       </div>
+      <p class="legal"><a href="privacy/">Politica de confidențialitate</a><a href="tos/">Termeni și condiții</a><span>Timișoara, România</span></p>
       <p class="imprint">Școala Voluntarilor · 2026 · curs intern, gratuit</p>
     </div>
     <p class="credits">Fotografii: „Dom - vedere interioara” de Popescu Camelia, CC BY-SA 3.0; „April 2023 - Piața Unirii din Timișoara - img 03” și „Domul Romano-Catolic din Timișoara (2023) - IMG 06” de Chainwit., CC BY 4.0 / CC BY-SA 4.0; Piața Unirii 1937, Willy Pragher, Landesarchiv Baden-Württemberg, CC BY 3.0; „Piarist Church, Timișoara (2023) - img 12” de Chainwit., CC BY 4.0; „Timisoara, biserica Millennium” de Turbojet, CC BY-SA 4.0. Toate prin <a href="https://commons.wikimedia.org">Wikimedia Commons</a>. Fotografia corului: arhiva corului.</p>
@@ -286,7 +335,7 @@ function lesson(i){
   app.innerHTML = barHTML() + `<div class="readbar" id="readbar"></div>
   <main class="page wrap">
     <article class="sheet" aria-labelledby="h1">
-      <a class="back-link" href="#cap-${c.id}">← Capitolul ${c.t}</a>
+      <a class="back-link" href="#cap-${c.id}">${ic("back")}<span>Capitolul ${c.t}</span></a>
       <h1 id="h1" class="rv">${m.t}</h1>
       <div class="facts-line rv" style="--i:1"><span>Lecția ${pos + 1} din ${c.mods.length} în capitolul ${c.t}</span><span>~15 min</span><span class="pill" id="lpct">${pct(i)}%</span></div>
       <div class="lesson-body" id="lbody"></div>
@@ -300,8 +349,8 @@ function lesson(i){
       <div class="result" id="res" aria-live="polite"><button class="btn dark" type="submit">Verifică răspunsurile</button></div>
     </form>
     <nav class="next" aria-label="Lecții">
-      ${i > 0 ? `<a class="btn quiet" href="#lectia-${i}">← ${M[i - 1].t}</a>` : "<span></span>"}
-      ${i + 1 < M.length ? `<a class="btn quiet" href="#lectia-${i + 2}">${M[i + 1].t} →</a>` : `<a class="btn quiet" href="#">Toate lecțiile</a>`}
+      ${i > 0 ? `<a class="btn quiet" href="#lectia-${i}">${ic("back")}<span>${M[i - 1].t}</span></a>` : "<span></span>"}
+      ${i + 1 < M.length ? `<a class="btn quiet" href="#lectia-${i + 2}"><span>${M[i + 1].t}</span>${ic("arrow")}</a>` : `<button class="btn quiet" type="button" data-menu>${ic("book")}<span>Toate lecțiile</span></button>`}
     </nav>
   </main>`;
   // split the lesson into parts at each heading, so reading can be measured part by part
@@ -352,7 +401,7 @@ function lesson(i){
 // ─── REZULTATELE ECHIPEI ───
 async function teamView(){
   view = "team";
-  app.innerHTML = barHTML() + `<main class="page wrap"><article class="sheet" aria-labelledby="h1"><a class="back-link" href="#">← Înapoi la curs</a><h1 id="h1">Rezultatele echipei</h1><div id="tbody"><p style="margin-top:20px">Se încarcă…</p></div></article></main>`;
+  app.innerHTML = barHTML() + `<main class="page wrap"><article class="sheet" aria-labelledby="h1"><a class="back-link" href="#">${ic("back")}<span>Înapoi la curs</span></a><h1 id="h1">Rezultatele echipei</h1><div id="tbody"><p style="margin-top:20px">Se încarcă…</p></div></article></main>`;
   paintBar();
   if (!sb || !leader) { document.getElementById("tbody").innerHTML = `<p style="margin-top:20px">Pagina e doar pentru coordonator. Conectează-te cu contul de coordonator.</p>`; return; }
   const {data, error} = await sb.from("results").select("*").order("updated", {ascending: false});
@@ -378,7 +427,7 @@ function cert(){
   const all = passed() === M.length;
   const date = new Date().toLocaleDateString("ro-RO", {day: "numeric", month: "long", year: "numeric"});
   app.innerHTML = barHTML() + `<main class="page wrap"><article class="sheet" aria-labelledby="h1">
-    <a class="back-link" href="#">← Înapoi la curs</a>
+    <a class="back-link" href="#">${ic("back")}<span>Înapoi la curs</span></a>
     <h1 id="h1">${all ? "Felicitări!" : "Certificatul tău"}</h1>
     ${all ? `
     <div class="field" style="margin-top:24px"><label for="name">Numele de pe certificat</label><input id="name" style="background:var(--paper-2);color:var(--paper-ink)" value="${esc(state.name)}"></div>
@@ -422,6 +471,7 @@ function afterRender(){
 // #lectia-3, #rezultate, #certificat; orice altceva (#cap-..., #ecuson) e pagina principală
 let lastView = "";
 function route(){
+  closeMenu();
   const h = location.hash.slice(1);
   const lm = /^lectia-(\d+)$/.exec(h);
   if (lm && M[+lm[1] - 1]) { scrollFns = []; lesson(+lm[1] - 1); scrollTo(0, 0); }
