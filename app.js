@@ -47,6 +47,7 @@ function loginBox(){
     <div class="row" style="margin-top:0"><button class="btn google" id="google">Continuă cu Google</button></div>
     <form class="field" id="otp" style="margin-top:0"><input id="email" type="email" required placeholder="sau emailul tău" aria-label="Email"><button class="btn ghost" type="submit">Trimite link pe email</button></form>
     <div class="msg" id="lmsg" aria-live="polite">${loginMsg}</div>
+    <p class="small">Prin conectare ești de acord cu <a href="tos/">Termenii și condițiile</a> și <a href="privacy/">Politica de confidențialitate</a>.</p>
   </div>`;
 }
 function wireLogin(){
@@ -105,7 +106,8 @@ function home(){
   <ol class="list">${M.map((m,i)=>`<li><button class="mod" data-i="${i}">
     <div class="num">${i+1}</div><div><strong>${m.t}</strong><span>${m.d}</span></div>
     <div class="pill ${state.done[i]?"done":""}">${state.done[i]?"Trecut "+state.done[i]+"/5":"~15 min"}</div></button></li>`).join("")}</ol>
-  ${all ? `<div class="row"><button class="btn" id="cert">Vezi certificatul</button></div>` : ""}`;
+  ${all ? `<div class="row"><button class="btn" id="cert">Vezi certificatul</button></div>` : ""}
+  <p class="small" style="margin-top:40px"><a href="privacy/">Politica de confidențialitate</a> · <a href="tos/">Termeni și condiții</a></p>`;
   app.querySelectorAll(".mod").forEach(b => b.onclick = () => lesson(+b.dataset.i));
   if (all) document.getElementById("cert").onclick = cert;
   if (leader) document.getElementById("team").onclick = teamView;
